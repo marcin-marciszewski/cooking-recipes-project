@@ -10,7 +10,11 @@
   box-sizing: border-box;
 }
 section {
-  padding: 150px 0;
+  padding: 100px 0;
+}
+
+.send_message {
+  padding-top: 100px;
 }
 
 .carousel-item {
@@ -66,4 +70,22 @@ hr.divider {
 
 #contact  p {
   font-size: 1.2rem;
+}
+
+.d-block {
+  text-decoration: none;
+}
+
+/*Send message*/
+
+.send_message {
+  padding-top: 100px;
+}
+
+.flash {
+  font-size: 2rem;
+  font-family: Roboto, sans-serif ;
+  text-align: center;
+  list-style-type: none;
+  padding-top: 20px;
 }

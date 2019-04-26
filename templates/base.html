@@ -31,7 +31,7 @@
             <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+            <a class="nav-link js-scroll-trigger" href="#services">Categories</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -90,7 +90,7 @@
     </div>
   </section>
 
-    {% block content %}
+    {% block categories %}
     {% endblock %}
 
     <!-- Contact Section -->
@@ -109,8 +109,8 @@
           <div>+1 (202) 555-0149</div>
         </div>
         <div class="col-lg-4 mr-auto text-center">
-          <i class="fas fa-envelope fa-3x mb-3 text-muted"></i>
-          <a class="d-block" href="mailto:contact@ycookingrecipes.tk">contact@cookingrecipes.tk</a>
+          <a href="{{ url_for ('mailto') }}"><i class="fas fa-envelope fa-3x mb-3 text-muted"></i></a>
+          <p class="d-block">Send a message to us</p><<!--<a class="d-block" href="mailto:contact@ycookingrecipes.tk">contact@cookingrecipes.tk</a>-->
         </div>
       </div>
     </div>
