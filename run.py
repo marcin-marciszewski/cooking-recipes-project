@@ -1,17 +1,28 @@
 import os 
-import json
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
+
+
+
+    
 app = Flask(__name__)
-app.secret_key = "key_one"
+
+app.config["MONGO_DBNAME"] = "cooking_book"
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+
+mongo = PyMongo(app)
+
+
 
 @app.route("/")
 def index():
-    data =[]
-    with open("data/recipes.json", "r") as json_data:
-        data = json.load(json_data)
-    return render_template("index.html", recipes=data) 
+    return render_template("index.html", cuisines=mongo.db.cuisines.find())
 
+@app.route('/get_recipe')
+def get_recipe():
+    return render_template("recipes.html", recipes=mongo.db.recipes.find())
 
 @app.route("/mailto", methods=["GET","POST"])
 def mailto():

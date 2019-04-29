@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('#datetimepicker').datetimepicker(FUNCTION)
 //     $('#mainNav').mouseenter(function(){
 //         $('#mainNav').addClass("bg-white");
 //     });
