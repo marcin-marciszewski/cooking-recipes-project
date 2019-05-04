@@ -33,9 +33,14 @@ def add_recipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipes.insert_one(request.form.to_dict())
-    print (request.form.getlist('ingredients'))
     return redirect(url_for('get_recipe'))
-    
+
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe = mongo.db.recipes.find_one({"_id:":ObjectId(recipe_id)})
+    all_cuisines = mongo.db.cuisines.find()
+    return render_template('editrecipe.html', recipe = the_recipe, cuisines = all_cuisines)
+
 @app.route("/mailto", methods=["GET","POST"])
 def mailto():
     if request.method == "POST":

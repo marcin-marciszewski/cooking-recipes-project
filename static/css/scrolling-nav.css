@@ -61,10 +61,12 @@ a > img {
   font-weight: 400;
 }
 
-hr.divider {
-    max-width: 50rem;
+.divider {
+    max-width: 50%;
     border-width: .2rem;
     border-color: #f4623a;
+    margin: 30px 25%;
+    
     
  
 }
@@ -97,5 +99,11 @@ hr.divider {
 }
 
 .preparation {
-  margin-top: 100px;
+  margin-top: 40px;
 }
+
+.border{
+  margin-top: 20px;
+  padding: 20px;
+    
+  }
