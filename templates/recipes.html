@@ -67,7 +67,7 @@
       <div class="col-lg-8 ingredients">
         <h1 class="display-4">{{recipe.recipe_name}}</h1>
         <h2 class="display-5">{{recipe.cuisine_name}}</h2>
-        <p class="lead">{% for ingredient in recipe.ingredients %}<p><span>{{ loop.index }}.</span>{{ ingredient }}</p> {% endfor %}
+        <p class="lead">{{recipe.ingredients }}<p><span>{{ loop.index }}.</span></p>
         
       </div>
       <div class="col-lg-4 preparation">
