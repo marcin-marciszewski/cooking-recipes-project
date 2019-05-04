@@ -8,6 +8,7 @@ from bson.objectid import ObjectId
 
     
 app = Flask(__name__)
+app.secret_key = 'onetwo'
 
 app.config["MONGO_DBNAME"] = "cooking_book"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")

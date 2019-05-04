@@ -1,112 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} {% block message_form %}
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
- 
-  <title>Cooking Recipes</title>
-  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{ url_for('static', filename='css/scrolling-nav.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-  <script type="text/javascript">
-    (function(){
-       emailjs.init("user_TZ2Rz10YglDIYOYrckbWa");
-    })();
-  </script>
-
-</head>
-
-<body>
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="{{ url_for ('index') }}"><img src="{{ url_for('static', filename='img/logo.png')}}"></a>
+<div class="container send_message">
+  <div class="row">
+    <div class="col-xl-12">
+      <h2>{{ page_title }}</h2>
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul class="flash">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
     </div>
-  </nav>
-
-<!--<section >-->
-    <div class="container send_message">
-        <div class="row">
-            <div class="col-xl-12">
-                <h2>{{ page_title }}</h2>
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul class="flash">
-                  {% for message in messages %}
-                  <li>{{ message }}</li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-                {% endwith %}
-            </div>
-        </div>
-    </div>
+  </div>
+</div>
 <!--</section>-->
 
 <section id="mainContent">
-   <div class="container pt-0">
+  <div class="container pt-0">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
-              <form onsubmit="return sendMail(this);" method="POST"  id="contactForm" novalidate>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Name</label>
-              <input type="text" class="form-control" placeholder="Name" name="name" id="name" required data-validation-required-message="Please enter your name.">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Email Address</label>
-              <input type="email" class="form-control" placeholder="Email Address" name="email" id="email" required data-validation-required-message="Please enter your email address.">
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <div class="control-group">
-            <div class="form-group floating-label-form-group controls">
-              <label>Message</label>
-              <textarea rows="5" class="form-control" placeholder="Message" name="message" id="message" required data-validation-required-message="Please enter a message."></textarea>
-              <p class="help-block text-danger"></p>
-            </div>
-          </div>
-          <br>
-          <div id="success"></div>
+        <!--<form onsubmit="return sendMail(this);" method="POST" name="contactForm" id="contactForm">-->
+        <!--  <div class="control-group">-->
+        <!--    <div class="controls">-->
+        <!--      <label for="name">Name</label>-->
+        <!--      <input type="text" class="d-block"placeholder="Name" name="name" id="name" required data-validation-required-message="Please enter your name.">-->
+        <!--      <label for="email">Email Address</label>-->
+        <!--      <input type="email" class="d-block" placeholder="Email Address" name="email" id="email"  required data-validation-required-message="Please enter your email address.">-->
+        <!--      <label for="message">Message</label>-->
+        <!--      <textarea rows="5" class="d-block" placeholder="Message" name="message" id="message" required data-validation-required-message="Please enter a message."></textarea>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--    <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>-->
+        <!--  </div>-->
+        <!--</form>-->
+        <!--<form onsubmit="return sendMail(this);" method="POST" name="contactForm" id="contactForm">-->
+        <!--  <div class="control-group">-->
+        <!--    <div class="form-group floatin-label-form-group controls">-->
+        <!--      <label>Name</label>-->
+        <!--      <input type="text" class="form-control required" placeholder="Name" name="name" id="name" data-validation-required-message="Please enter your name.">-->
+        <!--      <p class="help-block text-danger"></p>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--  <div class="control-group">-->
+        <!--    <div class="form-group floating-label-form-group controls">-->
+        <!--      <label>Email Address</label>-->
+        <!--      <input type="email" class="form-control required" placeholder="Email Address" name="email" id="email" data-validation-required-message="Please enter your email address.">-->
+        <!--      <p class="help-block text-danger"></p>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--  <div class="control-group">-->
+        <!--    <div class="form-group floating-label-form-group controls">-->
+        <!--      <label>Message</label>-->
+        <!--      <textarea rows="5" class="form-control required" placeholder="Message" name="message" id="message" data-validation-required-message="Please enter a message."></textarea>-->
+        <!--      <p class="help-block text-danger"></p>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--  <br>-->
+        <!--  <div id="success"></div>-->
+        <!--  <div class="form-group">-->
+        <!--    <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>-->
+        <!--  </div>-->
+        <!--</form>-->
+
+        <form onsubmit="return sendMail(this);" method="POST" name="contactForm" id="contactForm">
           <div class="form-group">
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Your name" required>
           </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Your message</label>
+            <textarea class="form-control" name="message" id="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
   </div>
 </section>
-
-
-  <!-- Footer -->
-  <footer class="py-5 bg-secondary">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Cooking Recipes 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
-
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/scrolling-nav.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/sendEmail.js')}}"></script>
-  
-
-
-</body>
-
-</html>
-
+{% endblock %}

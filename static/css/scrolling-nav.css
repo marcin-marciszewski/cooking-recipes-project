@@ -65,6 +65,7 @@ hr.divider {
     max-width: 50rem;
     border-width: .2rem;
     border-color: #f4623a;
+    
  
 }
 
@@ -88,4 +89,13 @@ hr.divider {
   text-align: center;
   list-style-type: none;
   padding-top: 20px;
+}
+
+.ingredients {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.preparation {
+  margin-top: 100px;
 }
