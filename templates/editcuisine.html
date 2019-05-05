@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<section>
+    <div class="container blocks">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="ml-5">Edit cuisine</h2>
+                <form action="{{ url_for('update_cuisine', cuisine_id=cuisine._id) }}" method="POST">
+                    <div class="form-row align-items-center mt-5">
+
+                        <div class="col-lg-10 ml-5">
+                            <label class="sr-only" for="recipe_name">Cuisine name</label>
+                            <h4>Cusine name</h4>
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-adjust"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="cuisine_name" name="cuisine_name" value="{{ cuisine.cuisine_name }}">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10 ml-5">
+                            <button type="submit" class="btn btn-primary mt-2 mb-2">Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

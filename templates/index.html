@@ -87,14 +87,16 @@
       {% for cuisine in cuisines %}
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-0 shadow">
-          <div class="card-body text-center">
+          <a href=""><div class="card-body text-center"></a>
             <h5 class="card-title mb-0">{{ cuisine.cuisine_name }}</h5>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
+    <a href="{{ url_for('get_cuisines') }}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Manage cuisines</a>
   </div>
+
 </section>
 
 {% endblock %}
@@ -106,7 +108,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
           <h2 class="mt-0">Let's Get In Touch!</h2>
-          <hr class="divider my-4 ml-2 text-center">
+          <hr class="divider my-4 ml-10 text-center">
           <p class="text-dark mb-5">Ready to start your next project with us? Give us a call or send us an email and we will get back to you as soon as possible!</p>
         </div>
       </div>
@@ -118,7 +120,6 @@
         <div class="col-lg-4 mr-auto text-center">
           <a href="{{ url_for ('mailto') }}"><i class="fas fa-envelope fa-3x mb-3 text-muted"></i></a>
           <p class="d-block">Send a message to us</p>
-          <<!--<a class="d-block" href="mailto:contact@ycookingrecipes.tk">contact@cookingrecipes.tk</a>-->
         </div>
       </div>
     </div>
