@@ -11,8 +11,13 @@
             <a href="{{url_for('delete_cuisine', cuisine_id=cuisine._id)}}" class="btn btn-danger btn-lg active ml-2" role="button" aria-pressed="true">Delete</a>
         </div>
     </div>
-    <hr class="divider my-4"> {% endfor %}
+    <hr class="divider my-4"> 
+    {% endfor %}
+    <div>
+        <a href="{{url_for('new_cuisine')}}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Add Cuisine</a>
+    </div>
 
 </div>
+
 
 {% endblock %}

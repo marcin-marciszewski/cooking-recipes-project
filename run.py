@@ -85,17 +85,34 @@ def update_cuisine(cuisine_id):
         {'cuisine_name': request.form.get('cuisine_name')})
     return redirect(url_for('get_cuisines'))
 
-@app.route("/mailto", methods=["GET","POST"])
-def mailto():
-    if request.method == "POST":
-        flash("Thank you {}, we have recived your message!".format(request.form["name"]))
-    return render_template("mailto.html", page_title="Send a message") 
+
 
 @app.route('/delete_cuisine/<cuisine_id>')
 def delete_cuisine(cuisine_id):
     mongo.db.cuisines.remove({'_id': ObjectId(cuisine_id)})
     return redirect(url_for('get_cuisines'))
 
+
+@app.route('/insert_cuisine', methods=["POST"])
+def insert_cuisine():
+    cuisines = mongo.db.cuisines
+    cuisine_data = {'cuisine_name': request.form.get('cuisine_name')}
+    cuisines.insert_one(cuisine_data)
+    return redirect(url_for('get_cuisines'))
+    
+
+@app.route('/new_cuisine')
+def new_cuisine():
+    return render_template('addcuisine.html')
+    
+    
+@app.route("/mailto", methods=["GET","POST"])
+def mailto():
+    if request.method == "POST":
+        flash("Thank you {}, we have recived your message!".format(request.form["name"]))
+    return render_template("mailto.html", page_title="Send a message") 
+    
+    
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
