@@ -9,8 +9,10 @@
   <meta name="author" content="">
 
   <title>Cooking Recipes</title>
-  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/scrolling-nav.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/buttons.css')}}" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
@@ -41,6 +43,9 @@
   {% endblock %} 
   
   {% block content %} 
+  {% endblock %} 
+  
+  {% block send_message %}
   {% endblock %} 
   
  

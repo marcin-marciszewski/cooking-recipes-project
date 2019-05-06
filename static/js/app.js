@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('#add').click(function() {
-        $('#ingredients-group').append(`<div><input  type="text" class="form-control my-2" name="ingredient" id="ingredient" placeholder="Ingredient" required/><input type="button" value="Delete" id="delete" class="btn btn-primary my-2"/></div>`);
+        $('#ingredients-group').append(`<div class="flex"><input  type="text" class="form-control my-2 " name="ingredient" id="ingredient" placeholder="Ingredient" required/><input type="button" value="Delete" id="delete" class="btn btn-outline-danger btn-radius  my-2 ml-1"/></div>`);
 
     });
 

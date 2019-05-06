@@ -68,3 +68,12 @@ def insert_recipe():
     
     
             <p class="lead">{% for ingredient in recipe.ingredients %}<p><span>{{ loop.index }}.</span>{{ ingredient }}</p> {% endfor %}
+
+
+       {% for recipe in recipes %}
+            {% if  recipe.cuisine_name == cuisine.cuisine_name  %}
+            <p>{{ cuisine.cuisine_name }}</p>
+            {% else %}
+            <p>{{ recipe.recipe_name }}</p>
+            {% endif %}
+        {% endfor %}

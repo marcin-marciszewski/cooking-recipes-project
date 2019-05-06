@@ -53,6 +53,15 @@ def edit_recipe(recipe_id):
     
     return render_template('editrecipe.html', recipe=the_recipe, cuisines=all_cuisines)
     
+@app.route('/one/<cuisine_id>')
+def one(cuisine_id):
+    the_cuisine = mongo.db.cuisines.find_one({"_id":ObjectId(cuisine_id)})
+    all_recipes = mongo.db.recipes.find()
+    
+    return render_template('one.html', recipes=all_recipes, cuisine=the_cuisine)
+
+
+    
     
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
@@ -86,6 +95,8 @@ def get_cuisines():
 def edit_cuisine(cuisine_id):
     return render_template('editcuisine.html',
     cuisine=mongo.db.cuisines.find_one({'_id': ObjectId(cuisine_id)}))
+    
+
     
 
 @app.route('/update_cuisine/<cuisine_id>', methods=['POST'])
