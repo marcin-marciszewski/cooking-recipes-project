@@ -13,11 +13,18 @@
     </div>
     <hr class="divider my-4"> 
     {% endfor %}
-    <div>
+    <div class="mb-4">
         <a href="{{url_for('new_cuisine')}}" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Add Cuisine</a>
     </div>
 
 </div>
-
+<div>
+<nav aria-label="breadcrumb my-0 ">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Manage Cuisines</li>
+  </ol>
+</nav>
+</div>
 
 {% endblock %}

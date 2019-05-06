@@ -34,7 +34,15 @@ def add_recipe():
 @app.route('/insert_recipe',methods=["POST"])
 def insert_recipe():
     recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    new_recipe = ({
+        'recipe_name': request.form.get('recipe_name'),
+        'cuisine_name': request.form.get('cuisine_name'),
+        'preparation_time': request.form.get('preparation_time'),
+        'cooking_time': request.form.get('cooking_time'),
+        'serves': request.form.get('serves'),
+        'ingredients': request.form.getlist('ingredient')
+    })
+    recipes.insert_one(new_recipe)
     return redirect(url_for('get_recipes'))
 
 
@@ -42,11 +50,13 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
     all_cuisines = mongo.db.cuisines.find()
+    
     return render_template('editrecipe.html', recipe=the_recipe, cuisines=all_cuisines)
     
     
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
+    one = mongo.db.recipes.find()
     recipes = mongo.db.recipes
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
@@ -55,7 +65,7 @@ def update_recipe(recipe_id):
         'preparation_time': request.form.get('preparation_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serves': request.form.get('serves'),
-        'ingredients': request.form.get('ingredients')
+        'ingredients': request.form.getlist('ingredients')
     })
     return redirect(url_for('get_recipes'))
     

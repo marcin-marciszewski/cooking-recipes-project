@@ -4,11 +4,12 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
  */
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+
 section {
   padding: 100px 0;
 }
@@ -35,7 +36,7 @@ footer {
   margin-top: 5%;
 }
 
-a > img {
+a>img {
   max-height: 30%;
   max-width: 30%;
   position: relative;
@@ -47,10 +48,17 @@ a > img {
   padding: 0;
 }
 
-.nav-link, #about p {
+.nav-link,
+#about p {
   font-size: 1.5rem;
-  
+
 }
+
+/*.nav-link::after {*/
+
+/*  content: ">";*/
+
+/*}*/
 
 .bg-dark {
   background: linear-gradient(#000 30%, #0000) !important;
@@ -62,16 +70,16 @@ a > img {
 }
 
 .divider {
-    max-width: 50%;
-    border-width: .2rem;
-    border-color: #f4623a;
-    margin: 30px 25%;
-    
-    
- 
+  max-width: 50%;
+  border-width: .2rem;
+  border-color: #f4623a;
+  margin: 30px 25%;
+
+
+
 }
 
-#contact  p {
+#contact p {
   font-size: 1.2rem;
 }
 
@@ -87,7 +95,7 @@ a > img {
 
 .flash {
   font-size: 2rem;
-  font-family: Roboto, sans-serif ;
+  font-family: Roboto, sans-serif;
   text-align: center;
   list-style-type: none;
   padding-top: 20px;
@@ -102,12 +110,34 @@ a > img {
   margin-top: 40px;
 }
 
-.border{
+.border {
   margin-top: 20px;
   padding: 20px;
-    
-  }
+
+}
 
 .blocks {
   margin-top: 130px;
+}
+
+.breadcrumb {
+  background-color: white;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+
+}
+
+p {
+  font-size: 1.5rem
+  
+}
+
+.input-group input {
+  vertical-align: text-bottom
+}
+
+#ingredients-group { 
+  display: block;
 }

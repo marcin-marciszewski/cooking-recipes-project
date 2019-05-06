@@ -8,87 +8,85 @@
 
                     <div class="col-lg-6 ml-5">
                         <label class="sr-only" for="recipe_name">Recipe name</label>
-                        <h4>Recipe name</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe name">
+                        <p>Recipe name</p>
+                        <div>
+                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe name" required/>
                         </div>
                     </div>
+                </div>
 
 
 
+                <div class="row">
                     <div class="col-lg-6 ml-5">
                         <label class="sr-only" for="cuisine_name">Cuisine</label>
-                        <h4>Cuisine</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                                <select class="custom-select" id="cuisine_name" name="cuisine_name">
+                        <p>Cuisine</p>
+                        <div>
+                            <select class="custom-select" id="cuisine_name" name="cuisine_name" required>
                                     <option value="" disabled selected>Choose cuisine</option>
                                     {% for cuisine in cuisines %}
                                     <option value="{{ cuisine.cuisine_name }}">{{ cuisine.cuisine_name }}</option> 
                                      {% endfor %}
-                                </select> 
-                            </div>
-                    </div>
-
-
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="preparation_time">Preparation time</label>
-                        <h4>Preparation Time</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" placeholder="Preparation time">
+                                </select>
                         </div>
-                    </div>
-
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="cooking_time">Cooking time</label>
-                        <h4>Cooking time</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" placeholder="Cooking time">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="serves">Serves</label>
-                        <h4>Serves</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="serves" name="serves" placeholder="Serves">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="ingredients">Ingredients</label>
-                        <h4>Ingredients</h4>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fas fa-adjust"></i></div>
-                            </div>
-                            <input type="text" class="form-control" id="ingredients" name="ingredients" placeholder="Ingredients">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-10 ml-5">
-                        <button type="submit"  class="btn btn-primary my-2">Add recipe</button>
                     </div>
                 </div>
-            </form>
 
+                <div class="row">
+                    <div class="col-lg-6 ml-5">
+                        <label class="sr-only" for="preparation_time">Preparation time</label>
+                        <p>Preparation Time</p>
+                        <div>
+                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" placeholder="Preparation time" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 ml-5">
+                        <label class="sr-only" for="cooking_time">Cooking time</label>
+                        <p>Cooking time</p>
+                        <div>
+                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" placeholder="Cooking time" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 ml-5">
+                        <label class="sr-only" for="serves">Serves</label>
+                        <p>Serves</p>
+                        <div>
+                            <input type="text" class="form-control" id="serves" name="serves" placeholder="Serves" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div id="ingredients-group" class="col-lg-6 ml-5">
+                        <label class="sr-only" for="ingredients">Ingredients</label>
+                        <p><span>Ingredients</span><input type="button" value="Add another" id="add" class="btn btn-primary my-2 ml-5" /></p>
+                        <div>
+                            <input type="text" class="form-control my-4" name="ingredient" id="ingredient" placeholder="Ingredient" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 ml-5">
+                    <button type="submit" class="btn btn-primary my-2">Add recipe</button>
+                </div>
         </div>
+        </form>
     </div>
 </section>
 
+<div>
+    <nav aria-label="breadcrumb my-0 ">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Recipe</li>
+        </ol>
+    </nav>
+</div>
 
 {% endblock %}

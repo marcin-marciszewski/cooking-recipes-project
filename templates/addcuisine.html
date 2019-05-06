@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+
+{% block content %}
 <section>
     <div class="container blocks">
         <div class="row">
@@ -9,7 +12,7 @@
 
                         <div class="col-lg-10 ml-5">
                             <label class="sr-only" for="recipe_name">Cuisine name</label>
-                            <h4>Cusine name</h4>
+                            <p>Cusine name</p>
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fas fa-adjust"></i></div>
@@ -19,7 +22,7 @@
                         </div>
 
                         <div class="col-lg-10 ml-5">
-                            <button type="submit" class="btn btn-primary mt-2 mb-2">Add cuisine</button>
+                            <button type="submit" class="btn btn-primary mt-2 mb-2">Add Cuisine</button>
                         </div>
                     </div>
                 </form>
@@ -27,6 +30,14 @@
         </div>
     </div>
 </section>
-
+<div>
+<nav aria-label="breadcrumb my-0 ">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('get_cuisines') }}">Manage Cuisines</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Add Cuisine</li>
+  </ol>
+</nav>
+</div>
 
 {% endblock %}

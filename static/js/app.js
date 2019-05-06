@@ -1,27 +1,17 @@
 $(document).ready(function() {
 
-//     $('#datetimepicker').datetimepicker(FUNCTION)
-// //     $('#mainNav').mouseenter(function(){
-//         $('#mainNav').addClass("bg-white");
-//     });
+    $('#add').click(function() {
+        $('#ingredients-group').append(`<div><input  type="text" class="form-control my-2" name="ingredient" id="ingredient" placeholder="Ingredient" required/><input type="button" value="Delete" id="delete" class="btn btn-primary my-2"/></div>`);
 
-//     $('#mainNav').mouseleave(function(){
-//         $('#mainNav').addClass("bg-white");
-//     // // });
+    });
 
-    // // $(window).scroll(function() {
-    // //   $('.navbar').addClass("bg-white");  
-    // // });
-
-    // var position = function() {
-    //     return (Math.floor(screenY))
-    // }
+    $('body').on('click','#delete', function() {
+        $(this).parent('div').remove()
+    })
 
 
 
-    
 
-    
 
     // var isInViewport = function(elem) {
     //     var bounding = elem.getBoundingClientRect();
@@ -33,7 +23,7 @@ $(document).ready(function() {
     //     );
     // };
 
-   
+
 
     // var image = document.querySelector('#one');
     // window.addEventListener('scroll', function(event) {
@@ -43,6 +33,6 @@ $(document).ready(function() {
     //         console.log("test")
     //     }
     // }, false);
-    
-    
+
+
 });
