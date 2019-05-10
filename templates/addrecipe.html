@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+</nav>
 <section>
     <div class="row">
         <div class="col-lg-12">
@@ -67,15 +68,25 @@
                             <label class="sr-only" for="ingredients">Ingredients</label>
                             <p>Ingredients</p>
                             <div>
-                                <input type="text" class="form-control my-4 mr-5" name="ingredient" id="ingredient" placeholder="Ingredient" required/>
+                                <input type="text" class="form-control my-2 " name="ingredient" id="ingredient" placeholder="Ingredient" required/>
                             </div>
                         </div>
-                        <input type="button" value="Add ingredient" id="add" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
-                        <button type="submit" class="btn btn-outline-success btn-radius my-2 ml-2">Add recipe</button>
-
+                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
                     </div>
-
-
+                </div>
+                
+                <div class="row">
+                    <div  class="col-lg-6 ml-5">
+                        <div id="steps-group">
+                            <label class="sr-only" for="method">Method</label>
+                            <p>Method</p>
+                            <div>
+                                <input type="text" class="form-control my-2" name="step" id="step" placeholder="Next step" required/>
+                            </div>
+                        </div>
+                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius  ml-1" />
+                        <button type="submit" class="btn btn-outline-success btn-radius  ml-2">Add recipe</button>
+                    </div>
                 </div>
         
 

@@ -8,7 +8,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  text-decoration: none;
+
 }
 
 
@@ -38,12 +38,12 @@ footer {
   margin-top: 5%;
 }
 
-a>img {
+#logo img {
   max-height: 30%;
   max-width: 30%;
   position: relative;
   padding: 0;
-  margin: 0;
+  margin-left: 40%;
 }
 
 .navbar {
@@ -58,12 +58,16 @@ a>img {
 
 
 
-.bg-dark {
+.nav-color {
   background: linear-gradient(#000 30%, #0000) !important;
 }
 
+d {
+  margin-left: 20px;
+}
+
 .display-3 {
-  
+
   font-weight: 400;
 }
 
@@ -122,7 +126,7 @@ a>img {
   background-color: white;
 }
 
-.breadcrumb-item a  {
+.breadcrumb-item a {
   text-decoration: none;
 
 }
@@ -132,21 +136,36 @@ p {
   font-size: 1.5rem;
   margin-top: 10px;
   font-family: Roboto, sans-serif;
-  
-  
+
+
 }
 
-#delete {
+#delete-ingredient, #delete-step {
   line-height: 10px;
 }
 
+
+
 .flex {
-   display: flex;
-   flex-direction: row;
-  
+  display: flex;
+  flex-direction: row;
+
 }
 
 a:hover {
   text-decoration: none!important;
 }
 
+.btn-center {
+  display: block;
+  margin: 0 auto;
+
+}
+
+#hide p {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 3rem;
+  margin-top: 30vh;
+  margin-bottom: 40vh;
+}

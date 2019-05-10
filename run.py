@@ -1,6 +1,6 @@
 import os 
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
 
@@ -18,17 +18,17 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html", cuisines=mongo.db.cuisines.find())
+    return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
 
 
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("recipes.html", recipes=mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING))
     
     
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', cuisines=mongo.db.cuisines.find())
+    return render_template('addrecipe.html', cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
     
 
 @app.route('/insert_recipe',methods=["POST"])
@@ -40,7 +40,8 @@ def insert_recipe():
         'preparation_time': request.form.get('preparation_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serves': request.form.get('serves'),
-        'ingredients': request.form.getlist('ingredient')
+        'ingredients': request.form.getlist('ingredient'),
+        'method': request.form.getlist('step')
     })
     recipes.insert_one(new_recipe)
     return redirect(url_for('get_recipes'))
@@ -49,23 +50,23 @@ def insert_recipe():
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
-    all_cuisines = mongo.db.cuisines.find()
+    all_cuisines = mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING)
+    
     
     return render_template('editrecipe.html', recipe=the_recipe, cuisines=all_cuisines)
     
-@app.route('/one/<cuisine_id>')
-def one(cuisine_id):
+@app.route('/recipes_for/<cuisine_id>')
+def recipes_for(cuisine_id):
     the_cuisine = mongo.db.cuisines.find_one({"_id":ObjectId(cuisine_id)})
-    all_recipes = mongo.db.recipes.find()
+    all_recipes = mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING)
     
-    return render_template('one.html', recipes=all_recipes, cuisine=the_cuisine)
+    return render_template('recipesfor.html', recipes=all_recipes, cuisine=the_cuisine)
 
 
     
     
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
-    one = mongo.db.recipes.find()
     recipes = mongo.db.recipes
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
@@ -74,7 +75,8 @@ def update_recipe(recipe_id):
         'preparation_time': request.form.get('preparation_time'),
         'cooking_time': request.form.get('cooking_time'),
         'serves': request.form.get('serves'),
-        'ingredients': request.form.getlist('ingredients')
+        'ingredients': request.form.getlist('ingredient'),
+        'method': request.form.getlist('step')
     })
     return redirect(url_for('get_recipes'))
     
@@ -88,7 +90,7 @@ def delete_recipe(recipe_id):
 @app.route('/get_cuisines')
 def get_cuisines():
     return render_template('cuisines.html',
-    cuisines=mongo.db.cuisines.find())
+    cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
     
 
 @app.route('/edit_cuisine/<cuisine_id>')

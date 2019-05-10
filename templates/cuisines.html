@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-
+</nav>
 <div class="container blocks ">
     {% for cuisine in cuisines %}
     <div class="row border border-secondary rounded">
         <div class="col-lg-8 ingredients">
-            <h1 class="display-5">{{ loop.index }}. {{cuisine.cuisine_name}}</h1>
+                <h1 class="display-5">{{ loop.index }}.  <a href="{{url_for('recipes_for', cuisine_id=cuisine._id)}}">{{cuisine.cuisine_name}}</a></h1>
         </div>
         <div class="mt-4">
             <a href="{{url_for('edit_cuisine', cuisine_id=cuisine._id)}}" class="btn btn-outline-primary btn-lg btn-radius" role="button" aria-pressed="true">Edit</a>
@@ -28,3 +28,4 @@
 </div>
 
 {% endblock %}
+
