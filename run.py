@@ -66,7 +66,8 @@ def insert_recipe():
         'cooking_time': request.form.get('cooking_time'),
         'serves': request.form.get('serves'),
         'ingredients': request.form.getlist('ingredient'),
-        'method': request.form.getlist('step')
+        'method': request.form.getlist('step'),
+        'date_posted': request.form.get('date_posted')
     })
     recipes.insert_one(new_recipe)
     return redirect(url_for('get_recipes'))

@@ -12,9 +12,10 @@
   <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/buttons.css')}}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/scrolling-nav.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/jquery.datetimepicker.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-   <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
   <script type="text/javascript">
     (function() {
       emailjs.init("user_TZ2Rz10YglDIYOYrckbWa");
@@ -29,43 +30,36 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark  nav-color fixed-top" id="mainNav">
     <div id="logo">
-      <a class="navbar-brand js-scroll-trigger " href="{{ url_for ('index') }}"><img  src="{{ url_for('static', filename='img/logo.png')}}"></a> 
+      <a class="navbar-brand js-scroll-trigger " href="{{ url_for ('index') }}"><img  src="{{ url_for('static', filename='img/logo.png')}}"></a>
     </div>
 
-  
-      {% block navbar %} 
-      {% endblock %}
-  
 
-  {% block carousel %}
-  {% endblock %} 
-  
-  {% block about %}
-  {% endblock %} 
-  
-  {% block content %} 
-  {% endblock %} 
-  
-  {% block send_message %}
-  {% endblock %} 
-  
- 
- 
+    {% block navbar %} {% endblock %} {% block carousel %} {% endblock %} {% block about %} {% endblock %} {% block content %} {% endblock %} {% block send_message %} {% endblock %}
 
-  <!-- Footer -->
-  <footer class="py-5 mt-0 bg-secondary">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Cooking Recipes 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
-  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/scrolling-nav.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/app.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/sendEmail.js')}}"></script>
+
+
+    <!-- Footer -->
+    <footer class="py-5 mt-0 bg-secondary">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Cooking Recipes 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/scrolling-nav.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/app.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/sendEmail.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.datetimepicker.full.min.js')}}"></script>
+    <script>
+      $('#date_posted').datetimepicker({
+        timepicker: false,
+        format:'Y-m-d'
+      });
+    </script>
 
 </body>
 
