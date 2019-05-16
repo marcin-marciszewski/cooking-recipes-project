@@ -2,6 +2,11 @@ import os
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+from pymongo import MongoClient
+import json
+from bson import json_util
+from bson.json_util import dumps
+
 
 
 
@@ -12,6 +17,10 @@ app.secret_key = 'onetwo'
 
 app.config["MONGO_DBNAME"] = "cooking_book"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+DBS_NAME = 'cooking_book'
+COLLECTION_NAME = 'recipes'
+FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, 'cooking_time': True, 'date_posted':True, '_id': False}
+
 mongo = PyMongo(app)
 
 
@@ -20,6 +29,22 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
 
+@app.route("/statistics")
+def statistics():
+    return render_template("statistics.html")
+
+
+@app.route("/statistics/recipes")
+def recipes():
+    connection = MongoClient(os.environ.get("MONGO_URI"))
+    collection = connection[DBS_NAME][COLLECTION_NAME]
+    recipes = collection.find(projection=FIELDS)
+    json_recipes = []
+    for recipe in recipes:
+        json_recipes.append(recipe)
+    json_recipes = json.dumps(json_recipes, default=json_util.default)
+    connection.close()
+    return json_recipes
 
 @app.route('/get_recipes')
 def get_recipes():
@@ -139,4 +164,5 @@ def mailto():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=True
+        )

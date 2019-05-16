@@ -6,4 +6,5 @@ MarkupSafe==1.1.1
 SecretStorage==2.0.0
 Werkzeug==0.15.2
 pymongo[tls,srv]==3.8.0
+elasticsearch==7.0.1
 
