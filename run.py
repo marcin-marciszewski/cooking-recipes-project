@@ -7,10 +7,6 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 
-
-
-
-
     
 app = Flask(__name__)
 app.secret_key = 'onetwo'
@@ -28,6 +24,7 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
+
 
 @app.route("/statistics")
 def statistics():
@@ -49,8 +46,9 @@ def recipes():
 @app.route('/get_recipes')
 def get_recipes():
     return render_template("recipes.html", recipes=mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING))
-    
-    
+
+
+
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html', cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
