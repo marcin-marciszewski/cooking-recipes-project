@@ -1,15 +1,19 @@
-import os 
-from flask import Flask, render_template, request, flash, redirect, url_for
+import os, math, re
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import json
 from bson import json_util
 from bson.json_util import dumps
+import pprint
+
 
     
 app = Flask(__name__)
 app.secret_key = 'onetwo'
+
+
 
 app.config["MONGO_DBNAME"] = "cooking_book"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
@@ -20,10 +24,19 @@ FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, '
 mongo = PyMongo(app)
 
 
-
 @app.route("/")
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
+    
+@app.route('/pagin', methods=["GET"])
+def pagin():
+    page_limit = 3 
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.recipes.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    recipes = mongo.db.recipes.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    
+    return render_template('pagin.html', recipes=recipes, title='Home', current_page=current_page, pages=pages)
 
 
 @app.route("/statistics")
@@ -45,7 +58,13 @@ def recipes():
 
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("recipes.html", recipes=mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING))
+    page_limit = 3 
+    current_page = int(request.args.get('current_page', 1))
+    total = mongo.db.recipes.count()
+    pages = range(1, int(math.ceil(total / page_limit)) + 1)
+    recipes = mongo.db.recipes.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    
+    return render_template('recipes.html', recipes=recipes, current_page=current_page, pages=pages)
 
 
 
