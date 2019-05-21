@@ -1,3 +1,5 @@
+// The code was sourced from: http://adilmoujahid.com/posts/2015/01/interactive-data-visualization-d3-dc-python-mongodb/
+
 queue()
 	.defer(d3.json, "/statistics/recipes")
 	.await(makeGraphs);

@@ -65,40 +65,51 @@
                     </div>
                 </div>
 
+
+                <div class="row">
+                    <div class="col-lg-6 ml-5">
+                        <label class="sr-only" for="date_posted">Date</label>
+                        <p>Date</p>
+                        <div>
+                            <input id="date_posted" name="date_posted" type="text" placeholder="Select date" required>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-6 ml-5">
                         <label class="sr-only" for="ingredients">Ingredients</label>
                         <p>Ingredients</p>
                         {% for ingredient in recipe.ingredients %}
                         <div class="flex">
-                            <input type="text" class="form-control my-2" id="ingredient" name="ingredient" value="{{ingredient}}" multiple><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2"/>
+                            <input type="text" class="form-control my-2" id="ingredient" name="ingredient" value="{{ingredient}}" multiple><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2" />
                         </div>
                         {% endfor %}
                         <div id="ingredients-group">
                         </div>
-                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 "/>
+                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 " />
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-6 ml-5">
                         <label class="sr-only" for="method">Method</label>
                         <p>Method</p>
                         {% for step in recipe.method %}
                         <div class="flex">
-                            <input type="text" class="form-control my-2" id="step" name="step" value="{{ step }}" multiple><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2"/>
+                            <input type="text" class="form-control my-2" id="step" name="step" value="{{ step }}" multiple><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2" />
                         </div>
                         {% endfor %}
                         <div id="steps-group">
-                        </div>                       
-                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2"/>
+                        </div>
+                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2" />
                         <button type="submit" class="btn btn-outline-success btn-radius ml-2">Save</button>
                     </div>
                 </div>
 
-                
-                    
-               
+
+
+
         </div>
         </form>
     </div>

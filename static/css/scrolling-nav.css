@@ -170,18 +170,20 @@ a:hover {
   margin-bottom: 40vh;
 }
 
-.pagination-page-info {
-    padding: .6em;
-    padding-left: 0;
-    width: 40em;
-    margin: .5em;
-    margin-left: 0;
-    font-size: 12px;
+.pagin{
+text-align: center;
 }
-.pagination-page-info b {
-    color: black;
-    background: #6aa6ed;
-    padding-left: 2px;
-    padding: .1em .25em;
-    font-size: 150%;
+
+.pagination {
+  display: inline-flex;
+}
+
+.search_form {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.rounded img {
+  width: 95%;
+  height: 95%;
 }

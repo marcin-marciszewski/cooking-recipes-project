@@ -40,3 +40,27 @@ def pagin():
     
     
     render_template('pagin.html', recipes=recipes, title='Home', current_page=current_page, pages=pages)
+    
+    
+    
+     page_limit = 3
+    current_page = int(request.args.get('current_page', 1))
+    users_query = request.args[' ']
+    db_search = mongo.db.recipe.find({'$text': {'$search': users_query}})
+    number_of_results = len([x for x in db_search])
+    pages = range(1, int(math.ceil(number_of_results / page_limit)) + 1)
+    
+    results = mongo.db.recipes.find({'$text': {'$search': users_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
+    return render_template('search.html', results=results, pages=pages, current_page=current_page )
+    
+    
+     <!--{% for ingredient in recipe.ingredients %}-->
+      <!--<p class="lead">{{ loop.index }}. {{ ingredient }}</p>-->
+      <!--{% endfor %}-->
+      <!--<h2>Method: </h2>-->
+      <!--{% for step in recipe.method %}-->
+      <!--<p class="lead">{{ loop.index }}. {{ step }}</p>-->
+      <!--{% endfor %}-->
+      
+        <!--<a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-primary btn-lg btn-radius ml-3" role="button" aria-pressed="true">Edit</a>-->
+    <!--<a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-danger btn-lg btn-radius ml-2" role="button" aria-pressed="true">Delete</a>-->
