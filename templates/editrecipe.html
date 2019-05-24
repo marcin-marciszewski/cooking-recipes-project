@@ -78,6 +78,16 @@
 
                 <div class="row">
                     <div class="col-lg-6 ml-5">
+                        <label class="sr-only" for="serves">Image</label>
+                        <p>Image</p>
+                        <div>
+                            <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.image }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 ml-5">
                         <label class="sr-only" for="ingredients">Ingredients</label>
                         <p>Ingredients</p>
                         {% for ingredient in recipe.ingredients %}

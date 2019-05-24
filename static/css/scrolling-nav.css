@@ -187,3 +187,18 @@ text-align: center;
   width: 95%;
   height: 95%;
 }
+
+.btn-outline-primary {
+    color: #235a94;
+    border-color: #007bff;
+}
+
+.btn-outline-success {
+    color: #176629;
+    border-color: #28a745;
+}
+
+.cuisine_name {
+   color:#094586;
+
+}

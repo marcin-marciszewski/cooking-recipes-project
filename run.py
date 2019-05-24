@@ -1,17 +1,17 @@
 import os, math, re
-from flask import Flask, render_template, request, flash, redirect, url_for, jsonify, json
+from flask import Flask, render_template, request, session, flash, redirect, url_for, jsonify, json
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 import json
 from bson import json_util
 from bson.json_util import dumps
-import pprint
+from flask_compress import Compress
 
 
     
 app = Flask(__name__)
-
+Compress(app)
 
 
 
@@ -23,6 +23,8 @@ COLLECTION_NAME = 'recipes'
 FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, 'cooking_time': True, 'date_posted':True, '_id': False}
 
 mongo = PyMongo(app)
+
+
 
 
 @app.route("/")
@@ -88,7 +90,8 @@ def insert_recipe():
         'serves': request.form.get('serves'),
         'ingredients': request.form.getlist('ingredient'),
         'method': request.form.getlist('step'),
-        'date_posted': request.form.get('date_posted')
+        'date_posted': request.form.get('date_posted'),
+        'image': request.form.get('image')
     })
     recipes.insert_one(new_recipe)
     return redirect(url_for('get_recipes'))
