@@ -11,7 +11,7 @@
                         <label class="sr-only" for="recipe_name">Recipe name</label>
                         <p>Recipe name</p>
                         <div>
-                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}">
+                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}" required>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <label class="sr-only" for="preparation_time">Preparation time</label>
                         <p>Preparation Time</p>
                         <div>
-                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" value="{{ recipe.preparation_time}}">
+                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" value="{{ recipe.preparation_time}}" required>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <label class="sr-only" for="cooking_time">Cooking time</label>
                         <p>Cooking time</p>
                         <div>
-                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ recipe.cooking_time }}">
+                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ recipe.cooking_time }}" required>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <label class="sr-only" for="serves">Serves</label>
                         <p>Serves</p>
                         <div>
-                            <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.serves }}">
+                            <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.serves }}" required>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                         <label class="sr-only" for="serves">Image</label>
                         <p>Image</p>
                         <div>
-                            <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.image }}">
+                            <input type="text" class="form-control" id="image" name="image" value="{{ recipe.image }}" required>
                         </div>
                     </div>
                 </div>
@@ -92,12 +92,12 @@
                         <p>Ingredients</p>
                         {% for ingredient in recipe.ingredients %}
                         <div class="flex">
-                            <input type="text" class="form-control my-2" id="ingredient" name="ingredient" value="{{ingredient}}" multiple><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2" />
+                            <input type="text" class="form-control my-2" id="ingredient" name="ingredient" value="{{ingredient}}" multiple><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2" required/>
                         </div>
                         {% endfor %}
                         <div id="ingredients-group">
                         </div>
-                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 " />
+                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 " required/>
                     </div>
                 </div>
 
@@ -107,12 +107,12 @@
                         <p>Method</p>
                         {% for step in recipe.method %}
                         <div class="flex">
-                            <input type="text" class="form-control my-2" id="step" name="step" value="{{ step }}" multiple><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2" />
+                            <input type="text" class="form-control my-2" id="step" name="step" value="{{ step }}" multiple><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2" required/>
                         </div>
                         {% endfor %}
                         <div id="steps-group">
                         </div>
-                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2" />
+                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2" required/>
                         <button type="submit" class="btn btn-outline-success btn-radius ml-2">Save</button>
                     </div>
                 </div>
