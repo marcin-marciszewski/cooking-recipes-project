@@ -59,7 +59,7 @@ footer {
 
 
 .nav-color {
-  background: linear-gradient(#000 30%, #0000) !important;
+  background: linear-gradient(#000 45%, #0000) !important;
 }
 
 d {
@@ -140,7 +140,8 @@ p {
 
 }
 
-#delete-ingredient, #delete-step {
+#delete-ingredient,
+#delete-step {
   line-height: 10px;
 }
 
@@ -170,8 +171,8 @@ a:hover {
   margin-bottom: 40vh;
 }
 
-.pagin{
-text-align: center;
+.pagin {
+  text-align: center;
 }
 
 .pagination {
@@ -189,16 +190,59 @@ text-align: center;
 }
 
 .btn-outline-primary {
-    color: #235a94;
-    border-color: #007bff;
+  color: #235a94;
+  border-color: #007bff;
 }
 
 .btn-outline-success {
-    color: #176629;
-    border-color: #28a745;
+  color: #176629;
+  border-color: #28a745;
 }
 
 .cuisine_name {
-   color:#094586;
+  color: #094586;
 
+}
+
+.user_form {
+  margin-top: 20vh;
+
+}
+
+.bg_login {
+  background: url("/static/img/login_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+
+}
+
+.bg_register {
+  background: url("/static/img/register_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+.form-container {
+  /*border: 1px solid #fff;*/
+  padding: 50px 60px;
+  box-shadow: 1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+
+}
+
+.form-container>h1,
+#reg-link {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto, sans-serif;
+}
+
+#db_query {
+  line-height: 1.5rem;
+}
+
+.breadcrumb1 {
+  position:absolute;
+    top:100vh;
+    transform:translateY(-100%);
+    width:100%;
 }

@@ -7,7 +7,7 @@ import json
 from bson import json_util
 from bson.json_util import dumps
 from flask_compress import Compress
-
+import bcrypt
 
     
 app = Flask(__name__)
@@ -31,6 +31,45 @@ mongo = PyMongo(app)
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
     
+@app.route("/login")
+def login():
+    if 'username' in session:
+        return "Logged in as " + session['username']
+    return render_template('login.html')
+    
+@app.route('/login_form', methods=['POST'])
+def login_form():
+    users = mongo.db.users
+    login_user = users.find_one({'name' : request.form['username']})
+    
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
+            session['username'] = request.form['username']
+        return redirect(url_for('index'))
+            
+
+    return 'Invalid username or password'
+    
+    
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'name' : request.form['username']})
+        
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+            
+        return 'That username already exists!'
+    return render_template("register.html")
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 @app.route("/statistics")
 def statistics():
@@ -139,8 +178,7 @@ def delete_recipe(recipe_id):
     
 @app.route('/get_cuisines')
 def get_cuisines():
-    return render_template('cuisines.html',
-    cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
+    return render_template('cuisines.html', cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
     
 
 @app.route('/edit_cuisine/<cuisine_id>')
@@ -164,7 +202,10 @@ def update_cuisine(cuisine_id):
 def delete_cuisine(cuisine_id):
     mongo.db.cuisines.remove({'_id': ObjectId(cuisine_id)})
     return redirect(url_for('get_cuisines'))
-
+    
+@app.route('/new_cuisine')
+def new_cuisine():
+    return render_template('addcuisine.html')
 
 @app.route('/insert_cuisine', methods=["POST"])
 def insert_cuisine():
@@ -174,9 +215,7 @@ def insert_cuisine():
     return redirect(url_for('get_cuisines'))
     
 
-@app.route('/new_cuisine')
-def new_cuisine():
-    return render_template('addcuisine.html')
+
     
     
 @app.route("/mailto", methods=["GET","POST"])

@@ -15,7 +15,7 @@
                             <label class="sr-only" for="recipe_name">Cuisine name</label>
                             <p>Cusine name</p>
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="cuisine_name" name="cuisine_name">
+                                <input type="text" class="form-control" id="cuisine_name" name="cuisine_name" required>
                             </div>
                         </div>
 
@@ -29,7 +29,7 @@
     </div>
 </section>
 <div>
-<nav aria-label="breadcrumb my-0 ">
+<nav class="breadcrumb1" aria-label="breadcrumb  ">
   <ol class="breadcrumb mb-0">
     <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
     <li class="breadcrumb-item"><a href="{{ url_for('get_cuisines') }}">Manage Cuisines</a></li>
