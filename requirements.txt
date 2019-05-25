@@ -24,3 +24,4 @@ urllib3==1.7.1
 wheel==0.24.0
 pycrypto==2.6.1
 dnspython==1.16.0
+itsdangerous==0.24
