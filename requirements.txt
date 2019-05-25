@@ -7,3 +7,4 @@ SecretStorage==2.0.0
 Werkzeug==0.15.2
 argparse==1.2.1
 Flask-Compress==1.4.0
+bcrypt==3.1.6
