@@ -14,7 +14,6 @@ app = Flask(__name__)
 Compress(app)
 
 
-
 app.config["MONGO_DBNAME"] = "cooking_book"
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -25,15 +24,15 @@ FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, '
 mongo = PyMongo(app)
 
 
-
-
 @app.route("/")
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
-    
+
+
 @app.route("/login")
 def login():
     return render_template('login.html')
+
     
 @app.route('/login_form', methods=['POST'])
 def login_form():
@@ -60,15 +59,16 @@ def register():
             session['username'] = request.form['username']
             flash("Your account has benn created")
             return redirect(url_for('index'))
-            
         return 'That username already exists!'
     return render_template("register.html")
+
 
 @app.route('/logout')
 def logout():
     session.clear()
     flash("You've been logged successfully")
     return redirect(url_for('index'))
+
 
 @app.route("/statistics")
 def statistics():
@@ -87,6 +87,7 @@ def recipes():
     connection.close()
     return json_recipes
 
+
 @app.route('/get_recipes')
 def get_recipes():
     # The code for the pagination was created with help from Shane Muirhead
@@ -97,6 +98,7 @@ def get_recipes():
     recipes = mongo.db.recipes.find().sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     
     return render_template('recipes.html', recipes=recipes, current_page=current_page, pages=pages)
+
 
 @app.route('/search')
 def search():
@@ -140,20 +142,9 @@ def insert_recipe():
 def edit_recipe(recipe_id):
     the_recipe = mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)})
     all_cuisines = mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING)
-    
-    
     return render_template('editrecipe.html', recipe=the_recipe, cuisines=all_cuisines)
-    
-@app.route('/recipes_for/<cuisine_id>')
-def recipes_for(cuisine_id):
-    the_cuisine = mongo.db.cuisines.find_one({"_id":ObjectId(cuisine_id)})
-    all_recipes = mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING)
-    
-    return render_template('recipesfor.html', recipes=all_recipes, cuisine=the_cuisine)
 
 
-    
-    
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
@@ -183,15 +174,18 @@ def delete_recipe(recipe_id):
 @app.route('/get_cuisines')
 def get_cuisines():
     return render_template('cuisines.html', cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
-    
 
+
+@app.route('/recipes_for/<cuisine_id>')
+def recipes_for(cuisine_id):
+    the_cuisine = mongo.db.cuisines.find_one({"_id":ObjectId(cuisine_id)})
+    all_recipes = mongo.db.recipes.find().sort('recipe_name', pymongo.ASCENDING)
+    return render_template('recipesfor.html', recipes=all_recipes, cuisine=the_cuisine)
 @app.route('/edit_cuisine/<cuisine_id>')
 def edit_cuisine(cuisine_id):
     return render_template('editcuisine.html',
     cuisine=mongo.db.cuisines.find_one({'_id': ObjectId(cuisine_id)}))
-    
 
-    
 
 @app.route('/update_cuisine/<cuisine_id>', methods=['POST'])
 def update_cuisine(cuisine_id):
@@ -202,10 +196,10 @@ def update_cuisine(cuisine_id):
     return redirect(url_for('get_cuisines'))
 
 
-
 @app.route('/delete_cuisine/<cuisine_id>')
 def delete_cuisine(cuisine_id):
     mongo.db.cuisines.remove({'_id': ObjectId(cuisine_id)})
+    flash("You've deleted the cuisine successfully")
     return redirect(url_for('get_cuisines'))
     
 @app.route('/new_cuisine')
@@ -221,9 +215,6 @@ def insert_cuisine():
     return redirect(url_for('get_cuisines'))
     
 
-
-    
-    
 @app.route("/mailto", methods=["GET","POST"])
 def mailto():
     if request.method == "POST":
