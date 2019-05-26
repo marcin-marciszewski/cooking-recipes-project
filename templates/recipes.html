@@ -2,71 +2,100 @@
 </nav>
 
 
+<!--Card with a recipe-->
 
 <div class="container blocks ">
-     {% for recipe in recipes %}
-    <div class="border border-secondary rounded">   
-    <div class="row">
-        <div class="col-lg-8 ">
-            <h1 class="display-4">{{ recipe.recipe_name }}</h1>
-            <h2 class="display-5">{{ recipe.cuisine_name }}</h2>
+    {% for recipe in recipes %}
+    <div class="border border-secondary rounded">
+        <div class="row">
+            <div class="col-lg-8 ">
+                <h1 class="display-4">{{ recipe.recipe_name }}</h1>
+                <h2 class="display-5">{{ recipe.cuisine_name }}</h2>
+            </div>
+            <div class="col-lg-4">
+                <img class="rounded" src="{{ recipe.image }}" alt="recipe image">
+            </div>
         </div>
-        <div class="col-lg-4">
-            <img class="rounded" src="{{ recipe.image }}" alt="recipe image">
+        <div class="row">
+            <div class="col-lg-8 ingredients">
+                <h2>Ingredients: </h2>
+                {% for ingredient in recipe.ingredients %}
+                <p class="lead">{{ loop.index }}. {{ ingredient }}</p>
+                {% endfor %}
+                <h2 class="mt-4">Method: </h2>
+                {% for step in recipe.method %}
+                <p class="lead">{{ loop.index }}. {{ step }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 preparation">
+                <p><span>Preparation time: </span>{{ recipe.preparation_time }}</p>
+                <p><span>Cooking time: </span>{{ recipe.cooking_time }}</p>
+                <p><span>Serves: </span>{{ recipe.serves }}</p>
+                <p><span>Date: </span>{{ recipe.date_posted }}</p>
+            </div>
+            <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-primary btn-lg btn-radius ml-3" role="button" aria-pressed="true">Edit</a>
+            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-danger btn-lg btn-radius ml-2" role="button" aria-pressed="true" >Delete</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-8 ingredients">
-            <h2>Ingredients: </h2>
-            {% for ingredient in recipe.ingredients %}
-            <p class="lead">{{ loop.index }}. {{ ingredient }}</p>
-            {% endfor %}
-            <h2>Method: </h2>
-            {% for step in recipe.method %}
-            <p class="lead">{{ loop.index }}. {{ step }}</p>
-            {% endfor %}
-        </div>
-        <div class="col-lg-4 preparation">
-            <p><span>Preparation time: </span>{{ recipe.preparation_time }}</p>
-            <p><span>Cooking time: </span>{{ recipe.cooking_time }}</p>
-            <p><span>Serves: </span>{{ recipe.serves }}</p>
-            <p><span>Date: </span>{{ recipe.date_posted }}</p>
-        </div>
-        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-primary btn-lg btn-radius ml-3" role="button" aria-pressed="true">Edit</a>
-        <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-danger btn-lg btn-radius ml-2" role="button" aria-pressed="true">Delete</a>
+    <hr class="divider my-5"> {% endfor %}
+
+    <!--If there is no recipes yet-->
+    <div id="hide">
+        <p>No recipes yet!</p>
     </div>
+
+    <!--Pagination-->
+    <div class="pagin">
+        <ul class="pagination flex-wrap">
+            {% for page_number in pages %} {% if page_number == current_page %}
+            <li class="page-item active"><a class="page-link" href="#">{{ page_number }}</a></li>
+            {% else %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('get_recipes', current_page=page_number) }}">{{ page_number }}</a></li>
+            {% endif %} {% endfor %}
+        </ul>
+    </div>
+
+
+    <a href="{{ url_for('add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Add recipe</a>
 </div>
-    <hr class="divider my-5"> 
-    
+
+<!--Message after adding a new recipe-->
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thank you</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    {{ message }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success  btn-radius " data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  <div id="hide">
-    <p>No recipes yet!</p>
-  </div>
-
-  <div class="pagin">
-    <ul class="pagination flex-wrap">
-      {% for page_number in pages %} 
-      {% if page_number == current_page %}
-      <li class="page-item active"><a class="page-link" href="#">{{ page_number }}</a></li>
-      {% else %}
-      <li class="page-item"><a class="page-link" href="{{ url_for('get_recipes', current_page=page_number) }}">{{ page_number }}</a></li>
-      {% endif %} 
-      {% endfor %}
-    </ul>
-  </div>
+</ul>
+{% endif %} {% endwith %}
 
 
-  <a href="{{ url_for('add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Add recipe</a>
-</div>
 
-<div>
-  <nav aria-label="breadcrumb my-0 ">
-    <ol class="breadcrumb mb-0">
-      <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Recipes</li>
-    </ol>
-  </nav>
-</div>
+    <!--Breadcrumbs-->
+    <div>
+        <nav aria-label="breadcrumb my-0 ">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Recipes</li>
+            </ol>
+        </nav>
+    </div>
 
-{% endblock %}
-
+    {% endblock %}

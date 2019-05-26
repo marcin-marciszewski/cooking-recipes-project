@@ -11,6 +11,9 @@
 
 }
 
+.blocks {
+  font-family: Roboto, sans-serif;
+}
 
 section {
   padding: 100px 0;
@@ -246,3 +249,4 @@ a:hover {
     transform:translateY(-100%);
     width:100%;
 }
+

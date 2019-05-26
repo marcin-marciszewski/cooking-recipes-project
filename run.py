@@ -33,8 +33,6 @@ def index():
     
 @app.route("/login")
 def login():
-    if 'username' in session:
-        return "Logged in as " + session['username']
     return render_template('login.html')
     
 @app.route('/login_form', methods=['POST'])
@@ -45,9 +43,8 @@ def login_form():
     if login_user:
         if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']) == login_user['password']:
             session['username'] = request.form['username']
+            flash("You're logged in")
         return redirect(url_for('index'))
-            
-
     return 'Invalid username or password'
     
     
@@ -61,6 +58,7 @@ def register():
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name' : request.form['username'], 'password' : hashpass})
             session['username'] = request.form['username']
+            flash("Your account has benn created")
             return redirect(url_for('index'))
             
         return 'That username already exists!'
@@ -69,6 +67,7 @@ def register():
 @app.route('/logout')
 def logout():
     session.clear()
+    flash("You've been logged successfully")
     return redirect(url_for('index'))
 
 @app.route("/statistics")
@@ -133,6 +132,7 @@ def insert_recipe():
         'image': request.form.get('image')
     })
     recipes.insert_one(new_recipe)
+    flash("You've added a new recipe")
     return redirect(url_for('get_recipes'))
 
 
@@ -166,14 +166,17 @@ def update_recipe(recipe_id):
         'serves': request.form.get('serves'),
         'ingredients': request.form.getlist('ingredient'),
         'method': request.form.getlist('step'),
+        'date_posted': request.form.get('date_posted'),
         'image': request.form.get('image')
     })
+    flash("You've updated the recipe successfully")
     return redirect(url_for('get_recipes'))
     
     
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    flash("You've deleted the recipe successfully")
     return redirect(url_for('get_recipes'))
     
     
@@ -195,6 +198,7 @@ def update_cuisine(cuisine_id):
     mongo.db.cuisines.update(
         {'_id': ObjectId(cuisine_id)},
         {'cuisine_name': request.form.get('cuisine_name')})
+    flash("You've updated the cuisine successfully")
     return redirect(url_for('get_cuisines'))
 
 
@@ -213,6 +217,7 @@ def insert_cuisine():
     cuisines = mongo.db.cuisines
     cuisine_data = {'cuisine_name': request.form.get('cuisine_name')}
     cuisines.insert_one(cuisine_data)
+    flash("You've added a new cuisine")
     return redirect(url_for('get_cuisines'))
     
 
