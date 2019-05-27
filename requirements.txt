@@ -1,8 +1,8 @@
-    
 Brotli==1.0.7
 Click==7.0
 Flask==1.0.3
 Flask-Compress==1.4.0
+Flask-Mail==0.9.1
 Flask-PyMongo==2.3.0
 Jinja2==2.10.1
 MarkupSafe==1.1.1

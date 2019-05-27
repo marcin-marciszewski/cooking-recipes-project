@@ -1,9 +1,7 @@
 {% extends 'base.html' %} 
-
-
 {% block content %}
 </nav>
-<section>
+<!--Add cuisine form-->
     <div class="container blocks">
         <div class="row">
             <div class="col-lg-12">
@@ -12,7 +10,7 @@
                     <div class="form-row align-items-center mt-5">
 
                         <div class="col-lg-10 ml-5">
-                            <label class="sr-only" for="recipe_name">Cuisine name</label>
+                            <label class="sr-only" for="cuisine_name ">Cuisine name</label>
                             <p>Cusine name</p>
                             <div class="input-group mb-2">
                                 <input type="text" class="form-control" id="cuisine_name" name="cuisine_name" required>
@@ -27,8 +25,8 @@
             </div>
         </div>
     </div>
-</section>
 <div>
+<!--Breadcrumbs-->
 <nav class="breadcrumb1" aria-label="breadcrumb  ">
   <ol class="breadcrumb mb-0">
     <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
@@ -37,5 +35,4 @@
   </ol>
 </nav>
 </div>
-
 {% endblock %}

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
+  <meta name="description" content="cooking book website">
+  <meta name="author" content="Marcin Marciszewski">
   <title>Cooking Recipes</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link href="{{ url_for('static', filename='css/buttons.css')}}" rel="stylesheet">
@@ -15,46 +12,26 @@
   <link href="{{ url_for('static', filename='css/jquery.datetimepicker.css')}}" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-  <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
-  <script>
-    (function() {
-      emailjs.init("user_TZ2Rz10YglDIYOYrckbWa");
-    })();
-  </script>
-
-
-
+ 
+  
 </head>
-
 <body id="page-top">
-  <!-- Navigation -->
+  <!-- Nav bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark  nav-color fixed-top" id="mainNav">
     <div id="logo">
       <a class="navbar-brand js-scroll-trigger " href="{{ url_for ('index') }}"><img  src="{{ url_for('static', filename='img/logo.png')}}" alt="logo"></a>
     </div>
-
-
     {% block navbar %} {% endblock %}
     {% block carousel %} {% endblock %} 
     {% block about %} {% endblock %} 
     {% block content %} {% endblock %} 
     {% block send_message %} {% endblock %}
     {% block footer %} {% endblock %}
-
-    
-
-
-
-
-   
-
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{ url_for('static', filename='js/scrolling-nav.js')}}"></script>
     <script src="{{ url_for('static', filename='js/app.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/sendEmail.js')}}"></script>
     <script src="{{ url_for('static', filename='js/jquery.datetimepicker.full.min.js')}}"></script>
     <script>
       $('#date_posted').datetimepicker({
@@ -62,7 +39,5 @@
         format:'Y-m-d'
       });
     </script>
-
 </body>
-
 </html>

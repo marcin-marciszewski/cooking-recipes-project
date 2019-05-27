@@ -1,121 +1,113 @@
 {% extends 'base.html' %} {% block content %}
 </nav>
-<section>
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="ml-5">Add a new recipe</h2>
-            <form action="{{ url_for('insert_recipe') }}" method="POST">
-                <div class="form-row align-items-center mt-5">
-
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="recipe_name">Recipe name</label>
-                        <p>Recipe name</p>
-                        <div>
-                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe name" required/>
-                        </div>
+    <div class="container-fluid recipe_form">
+        <h2 class="ml-5">Add a new recipe</h2>
+        <form action="{{ url_for('insert_recipe') }}" method="POST">
+            <!--Recipe name  -->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="recipe_name">Recipe name</label>
+                    <p>Recipe name</p>
+                    <div>
+                        <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Recipe name" required/>
                     </div>
                 </div>
-
-
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="cuisine_name">Cuisine</label>
-                        <p>Cuisine</p>
-                        <div>
-                            <select class="custom-select" id="cuisine_name" name="cuisine_name" required>
+            </div>
+            <!--Cuisine name-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="cuisine_name">Cuisine</label>
+                    <p>Cuisine</p>
+                    <div>
+                        <select class="custom-select" id="cuisine_name" name="cuisine_name" required>
                                     <option value="" disabled selected>Choose cuisine</option>
                                     {% for cuisine in cuisines %}
                                     <option value="{{ cuisine.cuisine_name }}">{{ cuisine.cuisine_name }}</option> 
                                      {% endfor %}
                                 </select>
-                        </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="preparation_time">Preparation time</label>
-                        <p>Preparation Time</p>
+            </div>
+            <!--Preparation time-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="preparation_time">Preparation time</label>
+                    <p>Preparation Time</p>
+                    <div>
+                        <input type="text" class="form-control" id="preparation_time" name="preparation_time" placeholder="Preparation time" required/>
+                    </div>
+                </div>
+            </div>
+            <!--Cooking time-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="cooking_time">Cooking time</label>
+                    <p>Cooking time</p>
+                    <div>
+                        <input type="text" class="form-control" id="cooking_time" name="cooking_time" placeholder="Cooking time" required/>
+                    </div>
+                </div>
+            </div>
+            <!--Serves-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="serves">Serves</label>
+                    <p>Serves</p>
+                    <div>
+                        <input type="text" class="form-control" id="serves" name="serves" placeholder="Serves" required/>
+                    </div>
+                </div>
+            </div>
+            <!--Date posted-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="date_posted">Date</label>
+                    <p>Date</p>
+                    <div>
+                        <input id="date_posted" name="date_posted" type="text" placeholder="        Select date" required>
+                    </div>
+                </div>
+            </div>
+            <!--Link to the image-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <label class="sr-only" for="serves">Image</label>
+                    <p>Image</p>
+                    <div>
+                        <input type="text" class="form-control" id="image" name="image" placeholder="Image" required/>
+                    </div>
+                </div>
+            </div>
+            <!--List of ingredients-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <div id="ingredients-group">
+                        <label class="sr-only" for="ingredient">Ingredients</label>
+                        <p>Ingredients</p>
                         <div>
-                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" placeholder="Preparation time" required/>
+                            <input type="text" class="form-control my-2 " name="ingredient" id="ingredient" placeholder="Ingredient" required/>
                         </div>
                     </div>
+                    <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="cooking_time">Cooking time</label>
-                        <p>Cooking time</p>
+            </div>
+            <!--Preparation steps-->
+            <div class="row">
+                <div class="col-lg-5 ml-5">
+                    <div id="steps-group">
+                        <label class="sr-only" for="step">Method</label>
+                        <p>Method</p>
                         <div>
-                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" placeholder="Cooking time" required/>
+                            <input type="text" class="form-control my-2" name="step" id="step" placeholder="Next step" required/>
                         </div>
                     </div>
+                    <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
+                    <button type="submit" class="btn btn-outline-success btn-radius  ml-2">Add recipe</button>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="serves">Serves</label>
-                        <p>Serves</p>
-                        <div>
-                            <input type="text" class="form-control" id="serves" name="serves" placeholder="Serves" required/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="date_posted">Date</label>
-                        <p>Date</p>
-                        <div>
-                            <input id="date_posted" name="date_posted" type="text" placeholder="Select date" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <label class="sr-only" for="serves">Image</label>
-                        <p>Image</p>
-                        <div>
-                            <input type="text" class="form-control" id="image" name="image" placeholder="Image" required/>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <div id="ingredients-group">
-                            <label class="sr-only" for="ingredients">Ingredients</label>
-                            <p>Ingredients</p>
-                            <div>
-                                <input type="text" class="form-control my-2 " name="ingredient" id="ingredient" placeholder="Ingredient" required/>
-                            </div>
-                        </div>
-                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col-lg-4 ml-5">
-                        <div id="steps-group">
-                            <label class="sr-only" for="method">Method</label>
-                            <p>Method</p>
-                            <div>
-                                <input type="text" class="form-control my-2" name="step" id="step" placeholder="Next step" required/>
-                            </div>
-                        </div>
-                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2 ml-1" />
-                        <button type="submit" class="btn btn-outline-success btn-radius  ml-2">Add recipe</button>
-                    </div>
-                </div>
-
-
-        </div>
+            </div>
         </form>
     </div>
-</section>
-
+<!--Breadcrumbs-->
 <div>
     <nav aria-label="breadcrumb my-0 ">
         <ol class="breadcrumb mb-0">
@@ -125,5 +117,4 @@
         </ol>
     </nav>
 </div>
-
 {% endblock %}

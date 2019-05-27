@@ -1,27 +1,25 @@
 {% extends 'base.html' %} {% block content %}
 </nav>
-<section>
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="ml-5">Edit recipe</h2>
-            <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
-                <div class="form-row align-items-center mt-5">
-
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="recipe_name">Recipe name</label>
-                        <p>Recipe name</p>
-                        <div>
-                            <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}" required>
-                        </div>
-                    </div>
+<div class="container-fluid recipe_form">
+    <h2 class="ml-5">Edit recipe</h2>
+    <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST">
+        <!--Recipe name  -->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="recipe_name">Recipe name</label>
+                <p>Recipe name</p>
+                <div>
+                    <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{ recipe.recipe_name }}" required>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="cuisine_name">Cuisine</label>
-                        <p>Cuisine</p>
-                        <div>
-                            <select class="custom-select" id="cuisine_name" name="cuisine_name">
+            </div>
+        </div>
+        <!--Cuisine name-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="cuisine_name">Cuisine</label>
+                <p>Cuisine</p>
+                <div>
+                    <select class="custom-select" id="cuisine_name" name="cuisine_name">
                                     <option value="" disabled selected>Choose cuisine</option>
                                     {% for cuisine in cuisines %}
                                         {% if cuisine.cuisine_name == recipe.cuisine_name %}
@@ -31,99 +29,93 @@
                                         {% endif %}
                                      {% endfor %}
                                 </select>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="preparation_time">Preparation time</label>
-                        <p>Preparation Time</p>
-                        <div>
-                            <input type="text" class="form-control" id="preparation_time" name="preparation_time" value="{{ recipe.preparation_time}}" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="cooking_time">Cooking time</label>
-                        <p>Cooking time</p>
-                        <div>
-                            <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ recipe.cooking_time }}" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="serves">Serves</label>
-                        <p>Serves</p>
-                        <div>
-                            <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.serves }}" required>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="date_posted">Date</label>
-                        <p>Date</p>
-                        <div>
-                            <input id="date_posted" name="date_posted" type="text" placeholder="Select date" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="serves">Image</label>
-                        <p>Image</p>
-                        <div>
-                            <input type="text" class="form-control" id="image" name="image" value="{{ recipe.image }}" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="ingredients">Ingredients</label>
-                        <p>Ingredients</p>
-                        {% for ingredient in recipe.ingredients %}
-                        <div class="flex">
-                            <input type="text" class="form-control my-2" id="ingredient" name="ingredient" value="{{ingredient}}" multiple><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2" required/>
-                        </div>
-                        {% endfor %}
-                        <div id="ingredients-group">
-                        </div>
-                        <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 " required/>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6 ml-5">
-                        <label class="sr-only" for="method">Method</label>
-                        <p>Method</p>
-                        {% for step in recipe.method %}
-                        <div class="flex">
-                            <input type="text" class="form-control my-2" id="step" name="step" value="{{ step }}" multiple><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2" required/>
-                        </div>
-                        {% endfor %}
-                        <div id="steps-group">
-                        </div>
-                        <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2" required/>
-                        <button type="submit" class="btn btn-outline-success btn-radius ml-2">Save</button>
-                    </div>
-                </div>
-
-
-
-
+            </div>
         </div>
-        </form>
-    </div>
-</section>
+        <!--Preparation time-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="preparation_time">Preparation time</label>
+                <p>Preparation Time</p>
+                <div>
+                    <input type="text" class="form-control" id="preparation_time" name="preparation_time" value="{{ recipe.preparation_time}}" required>
+                </div>
+            </div>
+        </div>
+        <!--Cooking time-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="cooking_time">Cooking time</label>
+                <p>Cooking time</p>
+                <div>
+                    <input type="text" class="form-control" id="cooking_time" name="cooking_time" value="{{ recipe.cooking_time }}" required>
+                </div>
+            </div>
+        </div>
+        <!--Serves-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="serves">Serves</label>
+                <p>Serves</p>
+                <div>
+                    <input type="text" class="form-control" id="serves" name="serves" value="{{ recipe.serves }}" required>
+                </div>
+            </div>
+        </div>
+        <!--Date posted-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="date_posted">Date</label>
+                <p>Date</p>
+                <div>
+                    <input id="date_posted" name="date_posted" type="text" placeholder="        Select date" required>
+                </div>
+            </div>
+        </div>
+        <!--Link to the image-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only" for="serves">Image</label>
+                <p>Image</p>
+                <div>
+                    <input type="text" class="form-control" id="image" name="image" value="{{ recipe.image }}" required>
+                </div>
+            </div>
+        </div>
+        <!--List of ingredients-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only">Ingredients</label>
+                <p>Ingredients</p>
+                {% for ingredient in recipe.ingredients %}
+                <div class="flex">
+                    <input type="text" class="form-control my-2 ingredient" name="ingredient" value="{{ingredient}}" required><input type="button" value="Delete" id="delete-ingredient" class="btn btn-outline-danger btn-radius my-2" required/>
+                </div>
+                {% endfor %}
+                <div id="ingredients-group">
+                </div>
+                <input type="button" value="Add ingredient" id="add-ingredient" class=" btn btn-outline-primary btn-radius my-2 ml-1 " required/>
+            </div>
+        </div>
+        <!--Preparation steps-->
+        <div class="row">
+            <div class="col-lg-5 ml-5">
+                <label class="sr-only">Method</label>
+                <p>Method</p>
+                {% for step in recipe.method %}
+                <div class="flex">
+                    <input type="text" class="form-control my-2 step" name="step" value="{{ step }}" required><input type="button" value="Delete" id="delete-step" class="btn btn-outline-danger btn-radius  my-2" required/>
+                </div>
+                {% endfor %}
+                <div id="steps-group">
+                </div>
+                <input type="button" value="Add step" id="add-step" class=" btn btn-outline-primary btn-radius my-2" required/>
+                <button type="submit" class="btn btn-outline-success btn-radius ml-2">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!--Breadcrumbs-->
 <div>
     <nav aria-label="breadcrumb my-0 ">
         <ol class="breadcrumb mb-0">
@@ -133,6 +125,4 @@
         </ol>
     </nav>
 </div>
-
-
 {% endblock %}

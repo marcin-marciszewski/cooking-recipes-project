@@ -8,7 +8,6 @@ from bson import json_util
 from bson.json_util import dumps
 from flask_compress import Compress
 import bcrypt
-from flask_mail import Mail, Message
 
     
 app = Flask(__name__)
@@ -21,37 +20,15 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 DBS_NAME = 'cooking_book'
 COLLECTION_NAME = 'recipes'
 FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, 'cooking_time': True, 'date_posted':True, '_id': False}
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'flaskmail123@gmail.com'
-app.config["MAIL_PASSWORD"] = 'marian87'
 
-mail = Mail(app)
 mongo = PyMongo(app)
 
 
-    
 @app.route("/")
 def index():
     return render_template("index.html", cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
 
-@app.route("/mailto",methods=['POST', 'GET'])
-def mailto():
-    return render_template("mailto.html", page_title="Send a message") 
-    
 
-@app.route('/send_mail', methods=['POST', 'GET'])
-def send_mail():
-    message = request.form['message']
-    email = request.form['email']
-    name = request.form['name']
-    msg = Message(subject = """Message sent by  """ +str(name), sender=name , recipients=["flaskmail123@gmail.com"])
-    msg.html = str(message) +"""<br>You can reply to """ +str(email)
-    mail.send(msg)
-    flash("We've recived your message")
-    return redirect(url_for('mailto'))
-    
 @app.route("/login")
 def login():
     return render_template('login.html')
@@ -236,7 +213,15 @@ def insert_cuisine():
     cuisines.insert_one(cuisine_data)
     flash("You've added a new cuisine")
     return redirect(url_for('get_cuisines'))
+    
 
+@app.route("/mailto", methods=["GET","POST"])
+def mailto():
+    if request.method == "POST":
+        flash("Thank you {}, we have recived your message!".format(request.form["name"]))
+    return render_template("mailto.html", page_title="Send a message") 
+    
+    
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

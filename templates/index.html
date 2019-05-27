@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block navbar %}
-
+<!--Navbar-->
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -17,7 +17,7 @@
       <a class="nav-link js-scroll-trigger" href="#about">About</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link js-scroll-trigger" href="#services">Cuisines</a>
+      <a class="nav-link js-scroll-trigger" href="#cuisines">Cuisines</a>
     </li>
     <li class="nav-item">
       <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -25,9 +25,7 @@
   </ul>
 </div>
 </nav>
-
-
-
+<!--Carousel-->
 {% endblock %} {% block carousel %}
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="2500">
@@ -64,6 +62,7 @@
   </div>
 </header>
 {% endblock %} {% block about %}
+<!--About section-->
 <section id="about">
   <div class="container">
     <div class="row">
@@ -73,14 +72,11 @@
           method to keep them organized. We have created this website to make your life easier so you can spend more time enjoying cooking. </p>
       </div>
     </div>
-
     <div class="row">
       <div class="col-lg-12 mx-auto text-center">
         <div c><a href="{{ url_for('get_recipes') }}" class=" btn btn-outline-primary btn-lg btn-radius mt-5 " role="button" aria-pressed="true">All recipes</a><a href="{{ url_for('add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-5 ml-3 "
             role="button" aria-pressed="true">Add recipe</a>
         </div>
-
-
         <div class="mt-5 search_form">
           <form action="{{ url_for('search') }}" class="search-form">
             <div class="input-group mb-3">
@@ -93,13 +89,10 @@
       </div>
     </div>
   </div>
-
-
 </section>
 {% endblock %} {% block content %}
-
-<section id="services" class="bg-light">
-
+<!--Cuisines section-->
+<section id="cuisines" class="bg-light">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 mx-auto text-center pb-5">
@@ -107,15 +100,12 @@
         <p class="lead">You can browse all cuisines, add more and edit existing. Click on any of them to get a list of added recipes.<br> We also prepared a bunch of statistics for you. </p>
       </div>
     </div>
-
     <div class="row pb-5">
       {% for cuisine in cuisines %}
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-0 shadow rounded">
-          <a href="">
-            <div class="card-body text-center ">
-          </a>
-          <a class=" " href="{{url_for('recipes_for', cuisine_id=cuisine._id)}}">
+          <div class="card-body text-center">
+          <a href="{{url_for('recipes_for', cuisine_id=cuisine._id)}}">
             <h5 class="card-title mb-0 ">{{ cuisine.cuisine_name }}</h5>
           </a>
           </div>
@@ -126,12 +116,9 @@
     <div class="row">
       <div class="btn-center"><a href="{{ url_for('get_cuisines') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Manage cuisines</a></div>
       <div class="btn-center"><a href="{{ url_for('statistics') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Statistics</a></div>
-
     </div>
   </div>
-
 </section>
-
 {% endblock %} {% block send_message %}
 <!-- Contact Section -->
 <section class="page-section" id="contact">
@@ -155,7 +142,7 @@
     </div>
   </div>
 </section>
-
+<!--Confirmation after user's message-->
 {% with messages = get_flashed_messages() %} {% if messages %}
 <ul class=flashes>
     {% for message in messages %}

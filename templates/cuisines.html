@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 </nav>
-
-
-
+<!--List of cuisines-->
 <div class="container blocks ">
     {% for cuisine in cuisines %}
     <div class="row border border-secondary rounded">
@@ -18,10 +16,8 @@
     <div class="mb-4">
         <a href="{{url_for('new_cuisine')}}" class="btn btn-outline-success btn-lg btn-radius" role="button" aria-pressed="true">Add Cuisine</a>
     </div>
-
 </div>
-
-
+<!--Message after user's action-->
 {% with messages = get_flashed_messages() %} {% if messages %}
 <ul class=flashes>
     {% for message in messages %}
@@ -47,6 +43,7 @@
     {% endfor %}
 </ul>
 {% endif %} {% endwith %}
+<!--Breadcrumbs-->
 <div>
     <nav aria-label="breadcrumb my-0 ">
         <ol class="breadcrumb mb-0">
@@ -55,5 +52,4 @@
         </ol>
     </nav>
 </div>
-
 {% endblock %}
