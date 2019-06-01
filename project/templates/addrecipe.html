@@ -2,7 +2,7 @@
 </nav>
     <div class="container-fluid recipe_form">
         <h2 class="ml-5">Add a new recipe</h2>
-        <form action="{{ url_for('insert_recipe') }}" method="POST">
+        <form action="{{ url_for('all_recipes.insert_recipe') }}" method="POST">
             <!--Recipe name  -->
             <div class="row">
                 <div class="col-lg-5 ml-5">
@@ -111,8 +111,8 @@
 <div>
     <nav aria-label="breadcrumb my-0 ">
         <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ url_for('get_recipes') }}">Recipes</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('homepage.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('all_recipes.get_recipes') }}">Recipes</a></li>
             <li class="breadcrumb-item active" aria-current="page">Add Recipe</li>
         </ol>
     </nav>

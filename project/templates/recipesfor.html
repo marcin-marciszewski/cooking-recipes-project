@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}>
+</nav>
+<div class="container blocks ">
+    {% for recipe in recipes %}     
+    {% if recipe.cuisine_name == cuisine.cuisine_name %}
+       <div class="border border-secondary rounded">
+        <div class="row">
+            <div class="col-lg-8 ">
+                <h1 class="display-4">{{ recipe.recipe_name }}</h1>
+                <h2 class="display-5">{{ recipe.cuisine_name }}</h2>
+            </div>
+            <div class="col-lg-4">
+                <img class="rounded" src="{{ recipe.image }}" alt="recipe image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 ingredients">
+                <h2>Ingredients: </h2>
+                {% for ingredient in recipe.ingredients %}
+                <p class="lead">{{ loop.index }}. {{ ingredient }}</p>
+                {% endfor %}
+                <h2 class="mt-4">Method: </h2>
+                {% for step in recipe.method %}
+                <p class="lead">{{ loop.index }}. {{ step }}</p>
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 preparation">
+                <p><span>Preparation time: </span>{{ recipe.preparation_time }}</p>
+                <p><span>Cooking time: </span>{{ recipe.cooking_time }}</p>
+                <p><span>Serves: </span>{{ recipe.serves }}</p>
+                <p><span>Date: </span>{{ recipe.date_posted }}</p>
+            </div>
+            <a href="{{ url_for('all_recipes.edit_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-primary btn-lg btn-radius ml-3" role="button" aria-pressed="true">Edit</a>
+            <a href="{{ url_for('all_recipes.delete_recipe', recipe_id=recipe._id) }}" class="btn btn-outline-danger btn-lg btn-radius ml-2" role="button" aria-pressed="true">Delete</a>
+        </div>
+    </div>
+    <hr class="divider my-5"> {% endif %} {% endfor %}
+    <!--If there is no recipes yet-->
+    <div id="hide">
+        <p>No recipes yet!</p>
+    </div>
+    <a href="{{ url_for('all_recipes.add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Add recipe</a>
+</div>
+<!--Breadcrumbs-->
+<div>
+    <nav aria-label="breadcrumb my-0 ">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url_for('homepage.index') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('all_cuisines.get_cuisines') }}">Cuisines</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{cuisine.cuisine_name}}</li>
+        </ol>
+    </nav>
+</div>
+
+{% endblock %}

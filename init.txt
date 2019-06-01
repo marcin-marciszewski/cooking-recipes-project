@@ -1,0 +1,58 @@
+import os, math, re
+from flask import Flask, render_template, request, session, flash, redirect, url_for, jsonify, json
+from flask_pymongo import PyMongo, pymongo
+from bson.objectid import ObjectId
+from pymongo import MongoClient
+import json
+from bson import json_util
+from bson.json_util import dumps
+from flask_compress import Compress
+import bcrypt
+from flask_mail import Mail, Message
+
+    
+app = Flask(__name__)
+Compress(app)
+
+
+app.config["MONGO_DBNAME"] = "cooking_book"
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+DBS_NAME = 'cooking_book'
+COLLECTION_NAME = 'recipes'
+FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, 'cooking_time': True, 'date_posted':True, '_id': False}
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465 
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+
+mail = Mail(app)
+mongo = PyMongo(app)
+
+
+
+from project.login.routes import login_function
+from project.send_message.routes import mail_function
+from project.statistics.routes import statistics_function
+from project.recipes.routes import all_recipes
+from project.cuisines.routes import all_cuisines
+from project.homepage.routes import homepage
+
+
+app.register_blueprint(login_function)
+app.register_blueprint(mail_function) 
+app.register_blueprint(statistics_function)
+app.register_blueprint(all_recipes)
+app.register_blueprint(all_cuisines)
+app.register_blueprint(homepage)
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True
+        )

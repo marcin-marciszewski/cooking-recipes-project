@@ -19,7 +19,7 @@
   <!-- Nav bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark  nav-color fixed-top" id="mainNav">
     <div id="logo">
-      <a class="navbar-brand js-scroll-trigger " href="{{ url_for ('index') }}"><img  src="{{ url_for('static', filename='img/logo.png')}}" alt="logo"></a>
+      <a class="navbar-brand js-scroll-trigger " href="{{ url_for ('homepage.index') }}"><img  src="{{ url_for('static', filename='img/logo.png')}}" alt="logo"></a>
     </div>
     {% block navbar %} {% endblock %}
     {% block carousel %} {% endblock %} 
@@ -27,6 +27,32 @@
     {% block content %} {% endblock %} 
     {% block send_message %} {% endblock %}
     {% block footer %} {% endblock %}
+    <!--Message after user's action-->
+{% with messages = get_flashed_messages() %} {% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thank you</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    {{ message }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-success  btn-radius " data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %} {% endwith %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js')}}"></script>

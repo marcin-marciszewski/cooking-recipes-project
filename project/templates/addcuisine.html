@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="ml-5">Add cuisine</h2>
-                <form action="{{ url_for('insert_cuisine') }}" method="POST">
+                <form action="{{ url_for('all_cuisines.insert_cuisine') }}" method="POST">
                     <div class="form-row align-items-center mt-5">
 
                         <div class="col-lg-10 ml-5">
@@ -29,8 +29,8 @@
 <!--Breadcrumbs-->
 <nav class="breadcrumb1" aria-label="breadcrumb  ">
   <ol class="breadcrumb mb-0">
-    <li class="breadcrumb-item"><a href="{{ url_for('index') }}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{ url_for('get_cuisines') }}">Manage Cuisines</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('homepage.index') }}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('all_cuisines.get_cuisines') }}">Manage Cuisines</a></li>
     <li class="breadcrumb-item active" aria-current="page">Add Cuisine</li>
   </ol>
 </nav>

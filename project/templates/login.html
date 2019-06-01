@@ -4,7 +4,7 @@
 <div class="container-fluid bg_login">
     <div class="row">
         <div class="col-lg-4 offset-lg-4 user_form ">
-            <form class="form-container" method=POST action="{{ url_for('login_form') }}" >
+            <form class="form-container" method=POST action="{{ url_for('login_function.login_form') }}" >
                 <h1>Please log in</h1>
                 <div class="form-group  mt-5">
                     <input type="text" class="form-control" name="username" placeholder="Username" required>
@@ -18,7 +18,7 @@
             </form>
             <br>
             <div id="reg-link">
-                Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>.
+                Don't have an account? <a href="{{ url_for('login_function.register') }}">Sign up here</a>.
             </div>
         </div>
     </div>

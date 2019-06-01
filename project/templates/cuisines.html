@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+</nav>
+<!--List of cuisines-->
+<div class="container blocks ">
+    {% for cuisine in cuisines %}
+    <div class="row border border-secondary rounded">
+        <div class="col-lg-8 ingredients">
+            <h1 class="display-5">{{ loop.index }}. <a href="{{url_for('all_cuisines.recipes_for', cuisine_id=cuisine._id)}}">{{cuisine.cuisine_name}}</a></h1>
+        </div>
+        <div class="mt-4">
+            <a href="{{url_for('all_cuisines.edit_cuisine', cuisine_id=cuisine._id)}}" class="btn btn-outline-primary btn-lg btn-radius" role="button" aria-pressed="true">Edit</a>
+            <a href="{{url_for('all_cuisines.delete_cuisine', cuisine_id=cuisine._id)}}" class="btn btn-outline-danger btn-lg btn-radius ml-2" role="button" aria-pressed="true">Delete</a>
+        </div>
+    </div>
+    <hr class="divider my-4"> {% endfor %}
+    <div class="mb-4">
+        <a href="{{url_for('all_cuisines.new_cuisine')}}" class="btn btn-outline-success btn-lg btn-radius" role="button" aria-pressed="true">Add Cuisine</a>
+    </div>
+</div>
+
+<!--Breadcrumbs-->
+<div>
+    <nav aria-label="breadcrumb my-0 ">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{{ url_for('homepage.index') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Manage Cuisines</li>
+        </ol>
+    </nav>
+</div>
+{% endblock %}
