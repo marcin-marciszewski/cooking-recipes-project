@@ -1,68 +1,56 @@
-/*!
- * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template-overviews/scrolling-nav)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-scrolling-nav/blob/master/LICENSE)
- */
+$full_height: 100vh;
+$full_percent: 100%;
+$roboto: Roboto, sans-serif;
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
-}
-
-.blocks {
-  font-family: Roboto, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 section {
-  padding: 100px 0;
+    padding: 100px 0;
 }
 
 .send_message {
-  padding-top: 100px;
+    padding-top: 100px;
 }
 
 .carousel-item {
-  height: 100vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    height: $full_height;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .carousel-caption {
-  padding-bottom: 18%;
+    padding-bottom: 18%;
 }
 
 footer {
-  margin-top: 5%;
+    margin-top: 5%;
 }
 
-#logo img {
-  max-height: 30%;
-  max-width: 30%;
-  position: relative;
-  padding: 0;
-  margin-left: 40%;
+#logo {
+    img {
+        max-height: 30%;
+        max-width: 30%;
+        position: relative;
+        padding: 0;
+        margin-left: 40%;
+    }
 }
 
 .navbar {
-  padding: 0;
+    padding: 0;
 }
 
 .nav-link,
 #about p {
-  font-size: 1.5rem;
-
-}
-
-
-
-.nav-color {
-  background: linear-gradient(#000 45%, #0000) !important;
+    font-size: 1.5rem;
 }
 
 d {
@@ -70,18 +58,14 @@ d {
 }
 
 .display-3 {
-
   font-weight: 400;
 }
 
 .divider {
-  max-width: 50%;
+  max-width: $full_percent / 2 ;
   border-width: .2rem;
   border-color: #f4623a;
   margin: 30px 25%;
-
-
-
 }
 
 #contact p {
@@ -92,23 +76,8 @@ d {
   text-decoration: none;
 }
 
-/*Send message*/
-
 .send_message {
   padding-top: 100px;
-}
-
-.flash {
-  font-size: 2rem;
-  font-family: Roboto, sans-serif;
-  text-align: center;
-  list-style-type: none;
-  padding-top: 20px;
-}
-
-.ingredients {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
 .preparation {
@@ -118,7 +87,6 @@ d {
 .border {
   margin-top: 20px;
   padding: 20px;
-
 }
 
 .blocks {
@@ -131,24 +99,18 @@ d {
 
 .breadcrumb-item a {
   text-decoration: none;
-
 }
-
 
 p {
   font-size: 1.5rem;
   margin-top: 10px;
-  font-family: Roboto, sans-serif;
-
-
+  font-family: $roboto;
 }
 
 #delete-ingredient,
 #delete-step {
   line-height: 10px;
 }
-
-
 
 .flex {
   display: flex;
@@ -163,18 +125,17 @@ a:hover {
 .btn-center {
   display: block;
   margin: 0 auto;
-
 }
 
 #hide p {
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: $roboto;
   font-size: 3rem;
-  margin-top: 30vh;
-  margin-bottom: 40vh;
+  margin-top: $full_height * .3;
+  margin-bottom: $full_height * .4;
 }
 
-.pagin {
+pagin {
   text-align: center;
 }
 
@@ -183,13 +144,13 @@ a:hover {
 }
 
 .search_form {
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: $full_percent * .2;
+  margin-right: $full_percent * .2;
 }
 
 .rounded img {
-  width: 95%;
-  height: 95%;
+  width: $full_percent * .95;
+  height: $full_percent * .95;
 }
 
 .btn-outline-primary {
@@ -208,35 +169,26 @@ a:hover {
 }
 
 .user_form {
-  margin-top: 20vh;
-
+  margin-top: $full_height * .2;
 }
 
 .bg_login {
   background: url("/static/img/login_bg.jpg") no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
-
+  height: $full_height;
 }
 
 .bg_register {
   background: url("/static/img/register_bg.jpg") no-repeat center center fixed;
   background-size: cover;
-  height: 100vh;
-}
-
-.form-container {
-  /*border: 1px solid #fff;*/
-  padding: 50px 60px;
-  box-shadow: 1px 4px 26px 11px rgba(0, 0, 0, 0.75);
-
+  height: $full_height;
 }
 
 .form-container>h1,
 #reg-link {
   color: #fff;
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: $roboto;
 }
 
 #db_query {
@@ -245,8 +197,7 @@ a:hover {
 
 .breadcrumb1 {
   position:absolute;
-    top:100vh;
+    top:$full_height;
     transform:translateY(-100%);
-    width:100%;
+    width:$full_percent;
 }
-

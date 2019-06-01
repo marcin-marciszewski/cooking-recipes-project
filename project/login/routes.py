@@ -41,5 +41,5 @@ def register():
 @login_function.route('/logout')
 def logout():
     session.clear()
-    flash("You've been logged successfully")
+    flash("You've been logged out successfully")
     return redirect(url_for('homepage.index'))

@@ -1,0 +1,162 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+section {
+  padding: 100px 0; }
+
+.send_message {
+  padding-top: 100px; }
+
+.carousel-item {
+  height: 100vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.carousel-caption {
+  padding-bottom: 18%; }
+
+footer {
+  margin-top: 5%; }
+
+#logo img {
+  max-height: 30%;
+  max-width: 30%;
+  position: relative;
+  padding: 0;
+  margin-left: 40%; }
+
+.navbar {
+  padding: 0; }
+
+.nav-link,
+#about p {
+  font-size: 1.5rem; }
+  
+.nav-color {
+  background: linear-gradient(#000 45%, #0000) !important;
+}
+
+d {
+  margin-left: 20px; }
+
+.display-3 {
+  font-weight: 400; }
+
+.divider {
+  max-width: 50%;
+  border-width: .2rem;
+  border-color: #f4623a;
+  margin: 30px 25%; }
+
+#contact p {
+  font-size: 1.2rem; }
+
+.d-block {
+  text-decoration: none; }
+
+.send_message {
+  padding-top: 100px; }
+
+.preparation {
+  margin-top: 40px; }
+
+.border {
+  margin-top: 20px;
+  padding: 20px; }
+
+.blocks {
+  margin-top: 130px; }
+
+.breadcrumb {
+  background-color: white; }
+
+.breadcrumb-item a {
+  text-decoration: none; }
+
+p {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-family: Roboto, sans-serif; }
+
+#delete-ingredient,
+#delete-step {
+  line-height: 10px; }
+
+.flex {
+  display: flex;
+  flex-direction: row; }
+
+a:hover {
+  text-decoration: none !important; }
+
+.btn-center {
+  display: block;
+  margin: 0 auto; }
+
+#hide p {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  font-size: 3rem;
+  margin-top: 30vh;
+  margin-bottom: 40vh; }
+
+pagin {
+  text-align: center; }
+
+.pagination {
+  display: inline-flex; }
+
+.search_form {
+  margin-left: 20%;
+  margin-right: 20%; }
+
+.rounded img {
+  width: 95%;
+  height: 95%; }
+
+.btn-outline-primary {
+  color: #235a94;
+  border-color: #007bff; }
+
+.btn-outline-success {
+  color: #176629;
+  border-color: #28a745; }
+
+.cuisine_name {
+  color: #094586; }
+
+.user_form {
+  margin-top: 20vh; }
+
+.bg_login {
+  background: url("/static/img/login_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh; }
+
+.bg_register {
+  background: url("/static/img/register_bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh; }
+
+.form-container > h1,
+#reg-link {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto, sans-serif; }
+
+#db_query {
+  line-height: 1.5rem; }
+
+.breadcrumb1 {
+  position: absolute;
+  top: 100vh;
+  transform: translateY(-100%);
+  width: 100%; }
+
+/*# sourceMappingURL=main.css.map */
