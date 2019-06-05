@@ -1,0 +1,5 @@
+   def test_incorrect_login(self):
+        tester = app.test_client(self)
+        response = tester.post('/login', data=dict(username="testwrong", password="testwrong"),
+        follow_redirect=True)
+        self.assertIn(b'Invalid username or password', response.data)

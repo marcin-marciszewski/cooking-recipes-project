@@ -45,7 +45,7 @@
             {% for page_number in pages %} {% if page_number == current_page %}
             <li class="page-item active"><a class="page-link" href="#">{{ page_number }}</a></li>
             {% else %}
-            <li class="page-item"><a class="page-link" href="{{ url_for('all_recipes.get_recipes', current_page=page_number) }}">{{ page_number }}</a></li>
+            <li class="page-item"><a class="page-link" href="{{ url_for('all_recipes.search', current_page=page_number, db_query=db_query) }}">{{ page_number }}</a></li>
             {% endif %} {% endfor %}
         </ul>
     </div>

@@ -1,68 +1,75 @@
+// Added directly to main.css 
+// .nav-color {
+//   background: linear-gradient(#000 45%, #0000) !important;
+// }
 $full_height: 100vh;
 $full_percent: 100%;
-$roboto: Roboto, sans-serif;
+$roboto: Roboto,
+sans-serif;
+
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
+
+
 section {
-    padding: 100px 0;
+  padding: 100px 0;
 }
 
 .send_message {
-    padding-top: 100px;
+  padding-top: 100px;
+}
+
+.ingredients {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .carousel-item {
-    height: $full_height;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  height: $full_height;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .carousel-caption {
-    padding-bottom: 18%;
+  padding-bottom: 18%;
 }
 
-footer {
-    margin-top: 5%;
-}
 
 #logo {
-    img {
-        max-height: 30%;
-        max-width: 30%;
-        position: relative;
-        padding: 0;
-        margin-left: 40%;
-    }
+  img {
+    max-height: 30%;
+    max-width: 30%;
+    position: relative;
+    padding: 0;
+    margin-left: 40%;
+  }
 }
 
 .navbar {
-    padding: 0;
+  padding: 0;
 }
 
 .nav-link,
 #about p {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-d {
-  margin-left: 20px;
-}
 
 .display-3 {
   font-weight: 400;
 }
 
 .divider {
-  max-width: $full_percent / 2 ;
+  max-width: $full_percent / 2;
   border-width: .2rem;
   border-color: #f4623a;
   margin: 30px 25%;
@@ -91,6 +98,7 @@ d {
 
 .blocks {
   margin-top: 130px;
+  font-family: $roboto;
 }
 
 .breadcrumb {
@@ -135,7 +143,7 @@ a:hover {
   margin-bottom: $full_height * .4;
 }
 
-pagin {
+.pagin {
   text-align: center;
 }
 
@@ -168,10 +176,6 @@ pagin {
 
 }
 
-.user_form {
-  margin-top: $full_height * .2;
-}
-
 .bg_login {
   background: url("/static/img/login_bg.jpg") no-repeat center center fixed;
   background-size: cover;
@@ -196,8 +200,28 @@ pagin {
 }
 
 .breadcrumb1 {
-  position:absolute;
-    top:$full_height;
-    transform:translateY(-100%);
-    width:$full_percent;
+  position: absolute;
+  top: $full_height;
+  transform: translateY(-100%);
+  width: $full_percent;
+}
+
+#contact,
+#about,
+#cuisines {
+  padding-top: $full_height / 5;
+  padding-bottom: $full_height / 5;
+}
+
+footer {
+  margin-top: $full_height / 10;
+}
+
+.form-container {
+  border: 0px solid #fff;
+  padding: 50px 60px;
+  margin-top: 20vh;
+  -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
 }

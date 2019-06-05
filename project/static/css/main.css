@@ -3,11 +3,18 @@
   margin: 0;
   box-sizing: border-box; }
 
+ .nav-color {
+   background: linear-gradient(#000 45%, #0000) !important;
+ }
 section {
   padding: 100px 0; }
 
 .send_message {
   padding-top: 100px; }
+
+.ingredients {
+  margin-top: 20px;
+  margin-bottom: 20px; }
 
 .carousel-item {
   height: 100vh;
@@ -20,9 +27,6 @@ section {
 
 .carousel-caption {
   padding-bottom: 18%; }
-
-footer {
-  margin-top: 5%; }
 
 #logo img {
   max-height: 30%;
@@ -37,13 +41,6 @@ footer {
 .nav-link,
 #about p {
   font-size: 1.5rem; }
-  
-.nav-color {
-  background: linear-gradient(#000 45%, #0000) !important;
-}
-
-d {
-  margin-left: 20px; }
 
 .display-3 {
   font-weight: 400; }
@@ -71,7 +68,8 @@ d {
   padding: 20px; }
 
 .blocks {
-  margin-top: 130px; }
+  margin-top: 130px;
+  font-family: Roboto, sans-serif; }
 
 .breadcrumb {
   background-color: white; }
@@ -106,7 +104,7 @@ a:hover {
   margin-top: 30vh;
   margin-bottom: 40vh; }
 
-pagin {
+.pagin {
   text-align: center; }
 
 .pagination {
@@ -130,9 +128,6 @@ pagin {
 
 .cuisine_name {
   color: #094586; }
-
-.user_form {
-  margin-top: 20vh; }
 
 .bg_login {
   background: url("/static/img/login_bg.jpg") no-repeat center center fixed;
@@ -158,5 +153,22 @@ pagin {
   top: 100vh;
   transform: translateY(-100%);
   width: 100%; }
+
+#contact,
+#about,
+#cuisines {
+  padding-top: 20vh;
+  padding-bottom: 20vh; }
+
+footer {
+  margin-top: 10vh; }
+
+.form-container {
+  border: 0px solid #fff;
+  padding: 50px 60px;
+  margin-top: 20vh;
+  -webkit-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 4px 26px 11px rgba(0, 0, 0, 0.75); }
 
 /*# sourceMappingURL=main.css.map */

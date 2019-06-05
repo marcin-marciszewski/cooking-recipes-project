@@ -30,7 +30,7 @@ def search():
     pages = range(1, int(math.ceil(t_total / page_limit)) + 1)
     
     results = mongo.db.recipes.find({'$text': {'$search': db_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
-    return render_template('search.html', results=results, pages=pages, current_page=current_page)
+    return render_template('search.html', results=results, pages=pages, current_page=current_page, db_query=db_query)
 
 
 @all_recipes.route('/add_recipe')
