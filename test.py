@@ -1,7 +1,6 @@
 import unittest
 from project import app
 
-
 class FlaskTestCase(unittest.TestCase):
     
    
@@ -58,11 +57,6 @@ class FlaskTestCase(unittest.TestCase):
         response = tester.get('/statistics', content_type='html/text')
         self.assertEqual(response.status_code, 200)
         self.assertTrue(b'Total Numeber of Recipes' in response.data)
-   
-     
-    
-        
- 
 
 if __name__ == '__main__':
     unittest.main()

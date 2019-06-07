@@ -74,23 +74,7 @@
           method to keep them organized. We have created this website to make your life easier so you can spend more time enjoying cooking. </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12 mx-auto text-center">
-        <div c><a href="{{ url_for('all_recipes.get_recipes') }}" class=" btn btn-outline-primary btn-lg btn-radius mt-5 " role="button" aria-pressed="true">All recipes</a><a href="{{ url_for('all_recipes.add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-5 ml-3 "
-            role="button" aria-pressed="true">Add recipe</a>
-        </div>
-        <div class="mt-5 search_form">
-          <form action="{{ url_for('all_recipes.search') }}" class="search-form">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control mt-3 " id="db_query" name="db_query" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
-            </div>
-            <button class="btn btn-outline-primary btn-radius " type="submit" id="button-addon2">Search</button>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+   </div>
 </section>
 {% endblock %} {% block content %}
 <!--Cuisines section-->
@@ -102,24 +86,6 @@
         <p class="lead">You can browse all cuisines, add more and edit existing. Click on any of them to get a list of added recipes.<br> We also prepared a bunch of statistics for you. </p>
       </div>
     </div>
-    <div class="row pb-5">
-      {% for cuisine in cuisines %}
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow rounded">
-          <div class="card-body text-center">
-          <a href="{{url_for('all_cuisines.recipes_for', cuisine_id=cuisine._id)}}">
-            <h5 class="card-title mb-0 ">{{ cuisine.cuisine_name }}</h5>
-          </a>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-    <div class="row">
-      <div class="btn-center"><a href="{{ url_for('all_cuisines.get_cuisines') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Manage cuisines</a></div>
-      <div class="btn-center"><a href="{{ url_for('statistics_function.statistics') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Statistics</a></div>
-    </div>
-  </div>
 </section>
 {% endblock %} {% block send_message %}
 <!-- Contact Section -->
@@ -129,7 +95,7 @@
       <div class="col-lg-8 text-center">
         <h2 class="mt-0">Let's Get In Touch!</h2>
         <hr class="divider my-4 ml-10 text-center">
-        <p class="text-dark mb-5">Give us a call or send us an email and we will get back to you as soon as possible!</p>
+        <p class="text-dark mb-5"> Give us a call or send us an email and we will get back to you as soon as possible!</p>
       </div>
     </div>
     <div class="row">

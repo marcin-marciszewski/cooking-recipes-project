@@ -42,4 +42,4 @@ def register():
 def logout():
     session.clear()
     flash("You have been logged out successfully")
-    return redirect(url_for('homepage.index'))
+    return redirect(url_for('homepage.welcome'))
