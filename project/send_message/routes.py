@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, Blueprint
+from flask import Flask, render_template, request, flash, redirect, session, url_for, Blueprint
 from flask_mail import Mail, Message
 from project import mail
 
@@ -6,7 +6,9 @@ mail_function = Blueprint('mail_function', __name__)
 
 @mail_function.route("/mailto",methods=['POST', 'GET'])
 def mailto():
-    return render_template("mailto.html", page_title="Send a message") 
+    if session:
+        return render_template("mailto.html", page_title="Send a message") 
+    return 'Please login first'
     
 
 @mail_function.route('/send_mail', methods=['POST', 'GET'])
