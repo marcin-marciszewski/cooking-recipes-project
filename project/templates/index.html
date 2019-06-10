@@ -6,7 +6,7 @@
 <div class="collapse navbar-collapse text-light mr-5" id="navbarResponsive">
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      {% if 'username' in session %}
+      {% if session %}
       <a class="nav-link js-scroll-trigger" href="{{url_for('login_function.logout') }}">Log Out</a> 
       {% else %}
       <a class="nav-link js-scroll-trigger" href="{{url_for('login_function.login') }}">Log In</a> 
@@ -75,9 +75,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-12 mx-auto text-center">
-        <div c><a href="{{ url_for('all_recipes.get_recipes') }}" class=" btn btn-outline-primary btn-lg btn-radius mt-5 " role="button" aria-pressed="true">All recipes</a><a href="{{ url_for('all_recipes.add_recipe') }}" class="btn btn-outline-success btn-lg btn-radius mt-5 ml-3 "
-            role="button" aria-pressed="true">Add recipe</a>
+      <div class="col-lg-12 mx-auto text-center mt-5">
+        <div c><a href="{{ url_for('all_recipes.get_recipes') }}" id="allrecipes-button" class=" btn btn-outline-primary btn-lg btn-radius mt-5 " role="button" aria-pressed="true">All recipes</a>
+        <a href="{{ url_for('all_recipes.add_recipe') }}" id="addrecipe-button" class="btn btn-outline-success btn-lg btn-radius mt-5 ml-3 "role="button" aria-pressed="true">Add recipe</a>
         </div>
         <div class="mt-5 search_form">
           <form action="{{ url_for('all_recipes.search') }}" class="search-form">
@@ -116,8 +116,8 @@
       {% endfor %}
     </div>
     <div class="row">
-      <div class="btn-center"><a href="{{ url_for('all_cuisines.get_cuisines') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Manage cuisines</a></div>
-      <div class="btn-center"><a href="{{ url_for('statistics_function.statistics') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Statistics</a></div>
+      <div id="managecuisines-button" class="btn-center"><a href="{{ url_for('all_cuisines.get_cuisines') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Manage cuisines</a></div>
+      <div id="statistics-button" class="btn-center"><a href="{{ url_for('statistics_function.statistics') }}" class="btn btn-outline-primary btn-lg btn-radius mt-3 " role="button" aria-pressed="true">Statistics</a></div>
     </div>
   </div>
 </section>

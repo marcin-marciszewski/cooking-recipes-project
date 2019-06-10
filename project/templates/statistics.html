@@ -15,8 +15,12 @@
 <body class="application">
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="./">Cooking Recipes</a>
+      <div class="navbar-header"> 
+        {% if session %}
+            <a class="navbar-brand" href="{{ url_for ('homepage.index') }}">Cooking Recipes</a>
+        {% else %}
+            <a class="navbar-brand" href="{{ url_for ('homepage.welcome') }}">Cooking Recipes</a>
+        {% endif %}
       </div>
     </div>
   </div>

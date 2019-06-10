@@ -1,8 +1,8 @@
-    <footer class="py-3  bg-secondary">
-      <div class="container">
-        <p class="m-0 text-center text-white">Cooking Recipes by Marcin Marciszewski</p>
+    <footer class="py-4  bg-secondary">
+        <div>
+        <p class=" text-center text-white">Cooking Recipes by Marcin Marciszewski</p>
         {% if 'username' in session %}
-        <p class="m-0 text-center text-white">Logged in as : {{ session['username'].title() }}</p>
+        <p class=" text-center bg-dark text-white">Logged in as : {{ session['username'].title() }}</p>
         {% endif %}
-      </div>
+       </div>
     </footer>

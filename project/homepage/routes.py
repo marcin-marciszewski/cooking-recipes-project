@@ -6,6 +6,8 @@ homepage = Blueprint('homepage', __name__)
 
 @homepage.route("/")
 def welcome():
+    if session:
+        session.clear()
     return render_template("welcome.html")
 
 @homepage.route("/index")
