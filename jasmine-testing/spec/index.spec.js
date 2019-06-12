@@ -38,7 +38,7 @@ describe('index.html', function() {
         });
 
         describe('Navbar', function() {
-            it('should contain all classes for navbar', function() {
+            it('should contain class navbar-toggler', function() {
                 expect($('.navbar-toggler')).toBeInDOM();
             });
 

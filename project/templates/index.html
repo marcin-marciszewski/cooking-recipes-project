@@ -12,9 +12,11 @@
       <a class="nav-link js-scroll-trigger" href="{{url_for('login_function.login') }}">Log In</a> 
       {% endif %}
     </li>
+    {% if not session %}
     <li class="nav-item">
       <a class="nav-link js-scroll-trigger" href="{{url_for('login_function.register') }}">Sign Up</a>
     </li>
+    {% endif %}
     <li class="nav-item">
       <a class="nav-link js-scroll-trigger" href="#about">About</a>
     </li>

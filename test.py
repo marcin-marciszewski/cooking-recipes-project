@@ -50,7 +50,7 @@ class FlaskTestCase(unittest.TestCase):
         tester = app.test_client(self)
         response = tester.get('/mailto', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(b'Send Message' in response.data)
+        
         
     def test_statistics(self):
         tester = app.test_client(self)
