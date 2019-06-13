@@ -80,12 +80,12 @@ Some tests were done for the backend using the unittest library in Python 3, and
 <h2>Deployment</h2> 
 
 The site was deployed on Heroku.com and can found under this address: https://cooking-recipes-project.herokuapp.com/. The copy of the final version and previous development version can be found on GitHub: https://github.com/szantilas87/cooking-recipes-project. A list of all necessary dependencies is in the requirements.txt file.<br> To run the project, some environment variables are needed:<br> 
-IP - 0.0.0.0<br>
-PORT  - 5000<br>
-MAIL_USERNAME - flaskmail123@gmail.com<br>
-MAIL_PASSWORD - marian87<br>
-MONGO_URI - mongodb+srv://root:onetwo@myfirstcluster-graej.mongodb.net/cooking_book?retryWrites=true<br>
-SECRET_KEY - Lny1BIO9MWWuyzCs8PHRjGyJFpPWfPN7<br>
+IP <br>
+PORT <br>
+MAIL_USERNAME - email address you want to use<br>
+MAIL_PASSWORD - password for the email address<br>
+MONGO_URI - set up MongoDB database on https://www.mongodb.com/ or your local environment<br>
+SECRET_KEY - any string<br>
 
 <h2>Credits</h2>
 <h4>Content</h4>

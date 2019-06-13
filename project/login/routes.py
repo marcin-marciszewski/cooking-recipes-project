@@ -6,11 +6,12 @@ import bcrypt
 
 login_function = Blueprint('login_function', __name__)
 
+#Login page
 @login_function.route("/login")
 def login():
     return render_template('login.html')
 
-    
+#Send login data to the database   
 @login_function.route('/login_form', methods=['POST'])
 def login_form():
     users = mongo.db.users
@@ -23,7 +24,7 @@ def login_form():
         return redirect(url_for('homepage.index'))
     return 'Invalid username or password'
     
-    
+#Add a new user to the database    
 @login_function.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
@@ -39,7 +40,7 @@ def register():
         return 'That username already exists!'
     return render_template("register.html")
 
-
+#Logout
 @login_function.route('/logout')
 def logout():
     session.clear()

@@ -8,6 +8,7 @@ from project import auth_required
 
 all_recipes = Blueprint('all_recipes', __name__)
 
+#Show all the recipes
 @all_recipes.route('/get_recipes')
 @auth_required
 def get_recipes():
@@ -19,7 +20,7 @@ def get_recipes():
     
     return render_template('recipes.html', recipes=recipes, current_page=current_page, pages=pages)
 
-
+#Search for the particular recipe
 @all_recipes.route('/search')
 @auth_required
 def search():
@@ -32,13 +33,13 @@ def search():
     results = mongo.db.recipes.find({'$text': {'$search': db_query }}).sort('_id', pymongo.ASCENDING).skip((current_page - 1)*page_limit).limit(page_limit)
     return render_template('search.html', results=results, pages=pages, current_page=current_page, db_query=db_query)
 
-
+#Add a new recipe
 @all_recipes.route('/add_recipe')
 @auth_required
 def add_recipe():
     return render_template('addrecipe.html', cuisines=mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING))
     
-
+#Insert a new recipe to the database
 @all_recipes.route('/insert_recipe',methods=["POST"])
 @auth_required
 def insert_recipe():
@@ -58,7 +59,7 @@ def insert_recipe():
     flash("You've added a new recipe")
     return redirect(url_for('all_recipes.get_recipes'))
 
-
+#Edit selected recipe
 @all_recipes.route('/edit_recipe/<recipe_id>')
 @auth_required
 def edit_recipe(recipe_id):
@@ -66,7 +67,7 @@ def edit_recipe(recipe_id):
     all_cuisines = mongo.db.cuisines.find().sort('cuisine_name', pymongo.ASCENDING)
     return render_template('editrecipe.html', recipe=the_recipe, cuisines=all_cuisines)
 
-
+#Update selected recipe
 @all_recipes.route('/update_recipe/<recipe_id>', methods=['POST'])
 @auth_required
 def update_recipe(recipe_id):
@@ -86,7 +87,7 @@ def update_recipe(recipe_id):
     flash("You've updated the recipe successfully")
     return redirect(url_for('all_recipes.get_recipes'))
     
-    
+#Delete selected recipe from the database  
 @all_recipes.route('/delete_recipe/<recipe_id>')
 @auth_required
 def delete_recipe(recipe_id):

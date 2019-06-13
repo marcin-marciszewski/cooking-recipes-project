@@ -6,12 +6,14 @@ from project import auth_required
 
 homepage = Blueprint('homepage', __name__)
 
+#Frontpage before login
 @homepage.route("/")
 def welcome():
     if session:
         session.clear()
     return render_template("welcome.html")
 
+#Frontpage after login
 @homepage.route("/index")
 @auth_required
 def index():

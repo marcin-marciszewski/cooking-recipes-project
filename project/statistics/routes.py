@@ -7,19 +7,20 @@ from bson import json_util
 from functools import wraps
 from project import auth_required
 
+#Configuration for the concetion between charts and the database
 DBS_NAME = 'cooking_book'
 COLLECTION_NAME = 'recipes'
 FIELDS = {'recipe_name': True, 'cuisine_name': True, 'preparation_time': True, 'cooking_time': True, 'date_posted':True, '_id': False}
 statistics_function = Blueprint('statistics_function', __name__)
 
 
-
+#Subpage with the charts
 @statistics_function.route("/statistics")
 @auth_required
 def statistics():
     return render_template("statistics.html")
 
-
+#Download data from the database to the charts
 @statistics_function.route("/statistics/recipes")
 @auth_required
 def recipes():

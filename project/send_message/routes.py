@@ -6,13 +6,14 @@ from project import auth_required
 
 mail_function = Blueprint('mail_function', __name__)
 
+#Send message form
 @mail_function.route("/mailto",methods=['POST', 'GET'])
 @auth_required
 def mailto():
     return render_template("mailto.html", page_title="Send a message") 
     
     
-
+#Send message with flask_mail
 @mail_function.route('/send_mail', methods=['POST', 'GET'])
 @auth_required
 def send_mail():
