@@ -1,17 +1,20 @@
-from flask import Flask, render_template, request, flash, redirect, session, url_for, Blueprint
+from flask import Flask, render_template, request, flash, redirect, session, url_for, Blueprint, make_response
 from flask_mail import Mail, Message
 from project import mail
+from functools import wraps
+from project import auth_required
 
 mail_function = Blueprint('mail_function', __name__)
 
 @mail_function.route("/mailto",methods=['POST', 'GET'])
+@auth_required
 def mailto():
-    if session:
-        return render_template("mailto.html", page_title="Send a message") 
-    return 'Please login first'
+    return render_template("mailto.html", page_title="Send a message") 
+    
     
 
 @mail_function.route('/send_mail', methods=['POST', 'GET'])
+@auth_required
 def send_mail():
     message = request.form['message']
     email = request.form['email']

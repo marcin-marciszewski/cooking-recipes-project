@@ -1,6 +1,7 @@
 # The idea for the login functionality was taken from: https://www.youtube.com/watch?v=vVx1737auSE
 from project import mongo
-from flask import Flask, render_template, request, session, flash, redirect, url_for, Blueprint
+from flask import Flask, render_template, request, session, flash, redirect, url_for, Blueprint 
+from flask_pymongo import pymongo
 import bcrypt
 
 login_function = Blueprint('login_function', __name__)
